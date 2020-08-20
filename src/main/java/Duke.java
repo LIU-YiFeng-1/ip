@@ -31,10 +31,7 @@ public class Duke {
         String input;
         Scanner in = new Scanner(System.in);
         input = in.nextLine();
-        while(true){
-            if(input.equals("bye")){
-                break;
-            }
+        while(!input.equals("bye")){
             System.out.println(input + "~~");
             input = in.nextLine();
         }
