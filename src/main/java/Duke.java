@@ -1,4 +1,5 @@
 import javax.script.ScriptContext;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -27,12 +28,31 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         printGreeting();
-        System.out.println("Please enter your command:");
+        System.out.println("Available Commands:\n"
+                +"1.list\n"
+                +"2.bye\n"
+                +"p.s all other inputs will be added to the list\n"
+                +"Please enter your command:");
+        printLine();
         String input;
+        ArrayList<String> list = new ArrayList<String>();
         Scanner in = new Scanner(System.in);
         input = in.nextLine();
         while(!input.equals("bye")){
-            System.out.println(input + "~~");
+            if(input.equals("list")){
+                if(list.size()==0){
+                    System.out.println("The list is empty");
+                    printLine();
+                }
+                for(int i=0; i < list.size(); i++){
+                    System.out.println(i+1 + ". " + list.get(i));
+                }
+                printLine();
+            }else{
+                list.add(input);
+                System.out.println("added: " + input);
+                printLine();
+            }
             input = in.nextLine();
         }
         printBye();
