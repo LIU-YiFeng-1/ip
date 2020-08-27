@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Duke {
     public static void printLine(){
-        System.out.println("-------------------------------------------");
+        System.out.println("----------------------------------"
+                +"-------------------------------------------");
     }
     public static void printBye(){
         System.out.println("Bye. Hope to see you again soon!");
@@ -15,8 +16,6 @@ public class Duke {
                 + "What can I do for you?\n";
         System.out.print(greeting);
         printLine();
-        //printBye();
-        //printLine();
     }
     public static void printEcho(String input){
 
@@ -31,13 +30,13 @@ public class Duke {
         printGreeting();
         System.out.println("Available Commands:\n"
                 +"1. list\n"
-                +"2. bye\n"
-                +"3. done"
+                +"2. done\n"
+                +"3. bye\n"
                 +"p.s all other inputs will be added to the list\n"
                 +"Please enter your command:");
         printLine();
         String input;
-        int count = 0; //
+        int count = 0; 
         ArrayList<String> list = new ArrayList<String>();
         Task tasks[] = new Task[100];
         Scanner in = new Scanner(System.in);
@@ -61,10 +60,19 @@ public class Duke {
                     int taskNumber;
                     inputNumber = input.replaceAll("[^0-9]", "");//replace all non-number with space
                     taskNumber = Integer.parseInt(inputNumber);
-                    tasks[taskNumber-1].makeAsDone();
-                    System.out.println("Nice! I've marked this task as done:\n"
-                            +"  [" + tasks[taskNumber-1].getStatusIcon()
-                            +"] " + tasks[taskNumber-1].description);
+                    if(taskNumber > list.size()){
+                        System.out.println("The task number is out of bound! Please type \"list\"");
+                        printLine();
+                    }else if(tasks[taskNumber-1].isDone==true){
+                        System.out.println("Chill man, this task is completed!");
+                        printLine();
+                    }else {
+                        tasks[taskNumber - 1].makeAsDone();
+                        System.out.println("Nice! I've marked this task as done:\n"
+                                + "  [" + tasks[taskNumber - 1].getStatusIcon()
+                                + "] " + tasks[taskNumber - 1].description);
+                        printLine();
+                    }
                 }
             } else{
                 list.add(input);

@@ -12,5 +12,4 @@ public class Task {
     public boolean makeAsDone(){
         return isDone = true;
     }
-
 }
