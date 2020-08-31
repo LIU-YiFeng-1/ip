@@ -17,9 +17,7 @@ public class Duke {
         System.out.print(greeting);
         printLine();
     }
-    public static void printEcho(String input){
 
-    }
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -47,7 +45,12 @@ public class Duke {
                     System.out.println("The list is empty");
                 }else {
                     for (int i = 0; i < list.size(); i++) {
-                        System.out.println(i+1 + ".[" + tasks[i].getStatusIcon() + "] " + list.get(i));
+                        System.out.println(i+1
+                                + ".["
+                                + tasks[i].getType()
+                                + "]"
+                                +"[" + tasks[i].getStatusIcon() + "] "
+                                + list.get(i));
                     }
                     printLine();
                 }
@@ -69,17 +72,67 @@ public class Duke {
                     }else {
                         tasks[taskNumber - 1].makeAsDone();
                         System.out.println("Nice! I've marked this task as done:\n"
-                                + "  [" + tasks[taskNumber - 1].getStatusIcon()
-                                + "] " + tasks[taskNumber - 1].description);
+                                + "  ["
+                                + tasks[taskNumber - 1].getType()
+                                +  "]"
+                                + "["
+                                + tasks[taskNumber - 1].getStatusIcon()
+                                + "] "
+                                + tasks[taskNumber - 1].getDescription());
                         printLine();
                     }
                 }
-            } else{
+            } else if(input.contains("todo")){
+                input = input.replace("todo ", "");
                 list.add(input);
-                tasks[count] = new Task(input);
-                System.out.println("added: " + input);
+                tasks[count] = new ToDo(input);
+                System.out.println("Got it. I've added this task: " );
+                System.out.println("  ["
+                        + tasks[count].getType()
+                        + "]"
+                        + "[" + tasks[count].getStatusIcon()
+                        + "] "
+                        + list.get(count));
+                System.out.println("Now you have " + list.size() +" tasks in the list.");
                 printLine();
                 count++;
+            }else if(input.contains("event")){
+                input = input.replace("event ", "");
+                int positionIndex = input.indexOf("/");
+                String date = input.substring(positionIndex+1, input.length());
+                input = input.substring(0, positionIndex);
+                tasks[count] = new Event(input, date);
+                list.add(tasks[count].getDescription());
+                System.out.println("Got it. I've added this task: ");
+                System.out.println("  ["
+                        + tasks[count].getType()
+                        + "]"
+                        + "[" + tasks[count].getStatusIcon()
+                        + "] "
+                        + list.get(count));
+                System.out.println("Now you have " + list.size() +" tasks in the list.");
+                printLine();
+                count++;
+            }else if(input.contains("deadline")) {
+                input = input.replace("deadline ", "");
+                int positionIndex = input.indexOf("/");
+                String date = input.substring(positionIndex + 1, input.length());
+                input = input.substring(0, positionIndex);
+                tasks[count] = new Deadline(input, date);
+                list.add(tasks[count].getDescription());
+                System.out.println("Got it. I've added this task: ");
+                System.out.println("  ["
+                        + tasks[count].getType()
+                        + "]"
+                        + "[" + tasks[count].getStatusIcon()
+                        + "] "
+                        + list.get(count));
+                System.out.println("Now you have " + list.size() + " tasks in the list.");
+                printLine();
+                count++;
+            } else{
+                System.out.println("Please input valid task description......");
+                printLine();
             }
             input = in.nextLine();
         }
