@@ -1,0 +1,19 @@
+list
+add
+read book
+todo read book
+list
+todo read another book
+event meeting /tuesday 2pm
+event 2nd meeting /sunday 5pm
+deadline project /by tmr 2359
+list
+deadline iP submission /by Sun 2359
+list
+done 7
+done 2
+done 2
+list
+done 3
+list
+bye
