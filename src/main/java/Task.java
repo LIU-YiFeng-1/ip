@@ -2,8 +2,6 @@ public class Task {
     protected String description;
     protected boolean isDone;
 
-    public  Task(){
-    }
     public Task(String description){ //setting up the constructor
         this.description = description;
         this.isDone = false;
@@ -18,6 +16,6 @@ public class Task {
         return isDone = true;
     }
     public String getDescription(){
-        return this.description;
+        return description;
     }
 }

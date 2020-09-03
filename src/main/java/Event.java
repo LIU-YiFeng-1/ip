@@ -1,14 +1,13 @@
 public class Event extends Task{
     protected String date;
-    protected String description;
 
     public Event(String description, String date){
-        this.description = description;
+        super(description);
         this.date = date;
     }
     @Override
     public String getDescription(){
-        return this.description + "(" + this.date + ")";
+        return description + "(" + date + ")";
     }
     @Override
     public String getType(){

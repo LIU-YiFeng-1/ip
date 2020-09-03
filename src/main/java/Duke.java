@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
+
+    public static final int MAX_CAPACITY = 100;
+
     public static void main(String[] args) {
         printWelcomeMessage();
         decodingUserCommands();
@@ -32,12 +35,12 @@ public class Duke {
         String input;
         int count = 0;
         ArrayList<String> list = new ArrayList<String>();
-        Task tasks[] = new Task[100];
+        Task tasks[] = new Task[MAX_CAPACITY];
         Scanner in = new Scanner(System.in);
         input = in.nextLine();
         while(!input.equals("bye")){
             if(input.equals("list")){
-                if(list.size()==0){
+                if(list.size()==0 ){
                     System.out.println("The list is empty");
                 }else {
                     printList(list, tasks);
@@ -46,8 +49,7 @@ public class Duke {
             }else if(input.contains("done")){
                 if(list.size()==0) {
                     System.out.println("The list is empty");
-                }
-                else {
+                } else {
                     String inputNumber;
                     int taskNumber;
                     inputNumber = input.replaceAll("[^0-9]", "");//replace all non-number with space
