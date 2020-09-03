@@ -40,14 +40,7 @@ public class Duke {
                 if(list.size()==0){
                     System.out.println("The list is empty");
                 }else {
-                    for (int i = 0; i < list.size(); i++) {
-                        System.out.println(i+1
-                                + ".["
-                                + tasks[i].getType()
-                                + "]"
-                                +"[" + tasks[i].getStatusIcon() + "] "
-                                + list.get(i));
-                    }
+                    printList(list, tasks);
                     printLine();
                 }
             }else if(input.contains("done")){
@@ -67,14 +60,7 @@ public class Duke {
                         printLine();
                     }else {
                         tasks[taskNumber - 1].makeAsDone();
-                        System.out.println("Nice! I've marked this task as done:\n"
-                                + "  ["
-                                + tasks[taskNumber - 1].getType()
-                                +  "]"
-                                + "["
-                                + tasks[taskNumber - 1].getStatusIcon()
-                                + "] "
-                                + tasks[taskNumber - 1].getDescription());
+                        printDoneMessage(tasks[taskNumber - 1]);
                         printLine();
                     }
                 }
@@ -108,6 +94,28 @@ public class Duke {
         printBye();
     }
 
+    private static void printList(ArrayList<String> list, Task[] tasks) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(i+1
+                    + ".["
+                    + tasks[i].getType()
+                    + "]"
+                    +"[" + tasks[i].getStatusIcon() + "] "
+                    + list.get(i));
+        }
+    }
+
+    private static void printDoneMessage(Task task) {
+        System.out.println("Nice! I've marked this task as done:\n"
+                + "  ["
+                + task.getType()
+                +  "]"
+                + "["
+                + task.getStatusIcon()
+                + "] "
+                + task.getDescription());
+    }
+
     private static void printWelcomeMessage() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -129,7 +137,7 @@ public class Duke {
     }
 
     private static int printTaskAdded(int count, ArrayList<String> list, Task[] tasks) {
-        System.out.println("Got it. I've added this task: " );
+        System.out.println("Got it. I've added this task:" );
         System.out.println("  ["
                 + tasks[count].getType()
                 + "]"
