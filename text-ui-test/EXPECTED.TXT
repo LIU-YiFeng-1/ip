@@ -19,6 +19,7 @@ p.s all other inputs will be added to the list
 Please enter your command:
 -----------------------------------------------------------------------------
 The list is empty
+-----------------------------------------------------------------------------
 Please input valid task description......
 -----------------------------------------------------------------------------
 Please input valid task description......
