@@ -42,28 +42,43 @@ public class Duke {
             } else if (input.startsWith ("done")) {
                 setDone(input, list, tasks);
             } else if (input.startsWith ("todo")) {
-                input = input.replace("todo ", "");
-                list.add(input);
-                tasks[count] = new ToDo(input);
-                count = printAddTaskMessage (count, list, tasks);
+                if (input.equals ("todo")) {
+                    System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty.");
+                    printLine ();
+                } else {
+                    input = input.replace ("todo ", "");
+                    list.add (input);
+                    tasks[count] = new ToDo (input);
+                    count = printAddTaskMessage (count, list, tasks);
+                }
             } else if (input.startsWith ("event")) {
-                input = input.replace("event ", "");
-                int positionIndex = input.indexOf("/");
-                String date = input.substring(positionIndex+1, input.length());
-                input = input.substring(0, positionIndex);
-                tasks[count] = new Event(input, date);
-                list.add(tasks[count].getDescription());
-                count = printAddTaskMessage (count, list, tasks);
+                try {
+                    input = input.replace ("event ", "");
+                    int positionIndex = input.indexOf ("/");
+                    String date = input.substring (positionIndex + 1, input.length ());
+                    input = input.substring (0, positionIndex);
+                    tasks[count] = new Event (input, date);
+                    list.add (tasks[count].getDescription ());
+                    count = printAddTaskMessage (count, list, tasks);
+                } catch (StringIndexOutOfBoundsException s) {
+                    System.out.println ("\u2639 " + "OOPS!!! The description of an event cannot be empty.");
+                    printLine ();
+                }
             } else if (input.startsWith ("deadline")) {
-                input = input.replace("deadline ", "");
-                int positionIndex = input.indexOf("/");
-                String date = input.substring(positionIndex + 1, input.length());
-                input = input.substring(0, positionIndex);
-                tasks[count] = new Deadline(input, date);
-                list.add(tasks[count].getDescription());
-                count = printAddTaskMessage (count, list, tasks);
+                try {
+                    input = input.replace ("deadline ", "");
+                    int positionIndex = input.indexOf ("/");
+                    String date = input.substring (positionIndex + 1, input.length ());
+                    input = input.substring (0, positionIndex);
+                    tasks[count] = new Deadline (input, date);
+                    list.add (tasks[count].getDescription ());
+                    count = printAddTaskMessage (count, list, tasks);
+                } catch (StringIndexOutOfBoundsException s) {
+                    System.out.println("\u2639 " + "OOPS!!! The description of a deadline cannot be empty.");
+                    printLine ();
+                }
             } else {
-                System.out.println("Please input valid task description......");
+                System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(");
                 printLine();
             }
             input = in.nextLine();
@@ -86,25 +101,30 @@ public class Duke {
     }
 
     private static void setDone(String input, ArrayList<String> list, Task[] tasks) {
-        if (list.size()==0) {
-            System.out.println("The list is empty");
-            printLine();
-        } else {
-            String inputNumber;
-            int taskNumber;
-            inputNumber = input.replaceAll("[^0-9]", "");//replace all non-number with space
-            taskNumber = Integer.parseInt(inputNumber);
-            if (taskNumber > list.size()) {
-                System.out.println("The task number is out of bound! Please type \"list\"");
-                printLine();
-            } else if (tasks[taskNumber-1].isDone==true){
-                System.out.println("Chill man, this task is completed!");
-                printLine();
+        try {
+            if (list.size () == 0) {
+                System.out.println ("The list is empty");
+                printLine ();
             } else {
-                tasks[taskNumber - 1].makeAsDone();
-                printDoneMessage(tasks[taskNumber - 1]);
-                printLine();
+                String inputNumber;
+                int taskNumber;
+                inputNumber = input.replaceAll ("[^0-9]", "");//replace all non-number with space
+                taskNumber = Integer.parseInt (inputNumber);
+                if (taskNumber > list.size ()) {
+                    System.out.println ("The task number is out of bound! Please type \"list\"");
+                    printLine ();
+                } else if (tasks[taskNumber - 1].isDone == true) {
+                    System.out.println ("Chill man, this task is completed!");
+                    printLine ();
+                } else {
+                    tasks[taskNumber - 1].makeAsDone ();
+                    printDoneMessage (tasks[taskNumber - 1]);
+                    printLine ();
+                }
             }
+        } catch (NumberFormatException n) {
+            System.out.println("\u2639 " + "OOPS!!! The task number of done cannot be empty.");
+            printLine ();
         }
     }
 
