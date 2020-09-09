@@ -1,3 +1,10 @@
+package duke;
+
+import duke.Deadline;
+import duke.Event;
+import duke.Task;
+import duke.ToDo;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -169,7 +176,7 @@ public class Duke {
                 +"4. event (e.g event meeting /monday 2pm)\n"
                 +"5. deadline (e.g deadline project /monday 2359)\n"
                 +"6. bye\n"
-                +"p.s all other inputs will be added to the list\n"
+                +"p.s all other inputs will be ignored!\n"
                 +"Please enter your command:");
         printLine();
     }
