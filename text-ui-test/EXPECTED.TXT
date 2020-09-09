@@ -20,9 +20,9 @@ Please enter your command:
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
-Please input valid task description......
+☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 -----------------------------------------------------------------------------
-Please input valid task description......
+☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 -----------------------------------------------------------------------------
 Got it. I've added this task:
   [T][✘] read book
