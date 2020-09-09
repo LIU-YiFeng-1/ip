@@ -1,7 +1,9 @@
-public class Event extends Task{
+package duke;
+
+public class Deadline extends Task {
     protected String date;
 
-    public Event(String description, String date){
+    public Deadline(String description, String date){
         super(description);
         this.date = date;
     }
@@ -11,6 +13,6 @@ public class Event extends Task{
     }
     @Override
     public String getType(){
-        return "E";
+        return "D";
     }
 }

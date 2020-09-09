@@ -1,4 +1,4 @@
-# Duke project template
+# duke.Duke project template
 
 This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
@@ -15,7 +15,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    1. Click `Open or Import`.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
+1. After the importing is complete, locate the `src/main/java/duke/Duke.java` file, right-click it, and choose `Duke.main()`. If the setup is correct, you should see something like the below:
    ```
    Hello from
     ____        _        
@@ -23,4 +23,17 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    | | | | | | | |/ / _ \
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
-   ```
+   
+   Hello! I'm Duke
+   What can I do for you?
+   -----------------------------------------------------------------------------
+   Available Commands:
+   1. list
+   2. done (e.g done 1)
+   3. todo (e.g todo homework)
+   4. event (e.g event meeting /monday 2pm)
+   5. deadline (e.g deadline project /monday 2359)
+   6. bye
+   p.s all other inputs will be ignored!
+   Please enter your command:
+   -----------------------------------------------------------------------------

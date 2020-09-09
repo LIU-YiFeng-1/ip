@@ -1,6 +1,8 @@
+package duke;
+
 public class Task {
     protected String description;
-    protected boolean isDone;
+    public boolean isDone;
 
     public Task(String description){ //setting up the constructor
         this.description = description;
