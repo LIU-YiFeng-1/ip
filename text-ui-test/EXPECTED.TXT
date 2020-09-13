@@ -11,12 +11,17 @@ What can I do for you?
 Available Commands:
 1. list
 2. done (e.g done 1)
-3. todo (e.g todo homework)
-4. event (e.g event meeting /monday 2pm)
-5. deadline (e.g deadline project /monday 2359)
-6. bye
-p.s all other inputs will be added to the list
+3. delete (e.g delete 1)
+4. todo (e.g todo homework)
+5. event (e.g event meeting /monday 2pm)
+6. deadline (e.g deadline project /monday 2359)
+7. bye
+p.s all other inputs will be ignored!
 Please enter your command:
+-----------------------------------------------------------------------------
+The list is empty
+-----------------------------------------------------------------------------
+The list is empty
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
@@ -25,66 +30,44 @@ The list is empty
 ☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 -----------------------------------------------------------------------------
 Got it. I've added this task:
-  [T][✘] read book
+  [T][✘] reading
 Now you have 1 tasks in the list.
 -----------------------------------------------------------------------------
-1.[T][✘] read book
------------------------------------------------------------------------------
 Got it. I've added this task:
-  [T][✘] read another book
+  [T][✘] watching drama
 Now you have 2 tasks in the list.
 -----------------------------------------------------------------------------
 Got it. I've added this task:
-  [E][✘] meeting (tuesday 2pm)
+  [E][✘] win toto(tmr)
 Now you have 3 tasks in the list.
 -----------------------------------------------------------------------------
 Got it. I've added this task:
-  [E][✘] 2nd meeting (sunday 5pm)
+  [D][✘] win toto(tmr)
 Now you have 4 tasks in the list.
 -----------------------------------------------------------------------------
-Got it. I've added this task:
-  [D][✘] project (by tmr 2359)
-Now you have 5 tasks in the list.
------------------------------------------------------------------------------
-1.[T][✘] read book
-2.[T][✘] read another book
-3.[E][✘] meeting (tuesday 2pm)
-4.[E][✘] 2nd meeting (sunday 5pm)
-5.[D][✘] project (by tmr 2359)
------------------------------------------------------------------------------
-Got it. I've added this task:
-  [D][✘] iP submission (by Sun 2359)
-Now you have 6 tasks in the list.
------------------------------------------------------------------------------
-1.[T][✘] read book
-2.[T][✘] read another book
-3.[E][✘] meeting (tuesday 2pm)
-4.[E][✘] 2nd meeting (sunday 5pm)
-5.[D][✘] project (by tmr 2359)
-6.[D][✘] iP submission (by Sun 2359)
------------------------------------------------------------------------------
-The task number is out of bound! Please type "list"
+1.[T][✘] reading
+2.[T][✘] watching drama
+3.[E][✘] win toto(tmr)
+4.[D][✘] win toto(tmr)
 -----------------------------------------------------------------------------
 Nice! I've marked this task as done:
-  [T][✓] read another book
+  [T][✓] reading
 -----------------------------------------------------------------------------
-Chill man, this task is completed!
+Got it. I've removed this task:
+  [T][✘] watching drama
+Now you have 3 tasks in the list. and deletion happened
 -----------------------------------------------------------------------------
-1.[T][✘] read book
-2.[T][✓] read another book
-3.[E][✘] meeting (tuesday 2pm)
-4.[E][✘] 2nd meeting (sunday 5pm)
-5.[D][✘] project (by tmr 2359)
-6.[D][✘] iP submission (by Sun 2359)
+1.[T][✓] reading
+2.[T][✘] win toto(tmr)
+3.[E][✘] win toto(tmr)
 -----------------------------------------------------------------------------
-Nice! I've marked this task as done:
-  [E][✓] meeting (tuesday 2pm)
+Got it. I've added this task:
+  [T][✘] againah?
+Now you have 4 tasks in the list.
 -----------------------------------------------------------------------------
-1.[T][✘] read book
-2.[T][✓] read another book
-3.[E][✓] meeting (tuesday 2pm)
-4.[E][✘] 2nd meeting (sunday 5pm)
-5.[D][✘] project (by tmr 2359)
-6.[D][✘] iP submission (by Sun 2359)
+1.[T][✓] reading
+2.[T][✘] win toto(tmr)
+3.[E][✘] win toto(tmr)
+4.[T][✘] againah?
 -----------------------------------------------------------------------------
 Bye. Hope to see you again soon!
