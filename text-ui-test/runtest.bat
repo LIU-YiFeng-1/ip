@@ -7,7 +7,7 @@ REM delete output from previous run
 del ACTUAL.TXT
 
 REM compile the code into the bin folder; Compiling all the .java files in the directory
-javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\duke\*.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\duke\*.java ..\src\main\java\duke\tasks\*.java
 
 
 IF ERRORLEVEL 1 (
