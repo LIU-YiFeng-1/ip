@@ -1,19 +1,16 @@
 list
-add
-read book
-todo read book
+done
+delete
+asdhaksdhj
+hi can you
+todo reading
+todo watching drama
+event win toto/tmr
+deadline win toto/tmr
 list
-todo read another book
-event meeting /tuesday 2pm
-event 2nd meeting /sunday 5pm
-deadline project /by tmr 2359
+done 1
+delete 2
 list
-deadline iP submission /by Sun 2359
-list
-done 7
-done 2
-done 2
-list
-done 3
+todo againah?
 list
 bye

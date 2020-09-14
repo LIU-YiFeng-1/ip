@@ -38,9 +38,9 @@ public class Duke {
      */
     private static void decodingUserCommands() {
         String input;
-        int count = 0;
+        int listSize = 0;
         ArrayList<String> list = new ArrayList<String>();
-        Task tasks[] = new Task[MAX_CAPACITY];
+        Task[] tasks = new Task[MAX_CAPACITY];
         Scanner in = new Scanner(System.in);
         input = in.nextLine();
         while (!input.equals("bye")) {
@@ -49,41 +49,13 @@ public class Duke {
             } else if (input.startsWith ("done")) {
                 setDone(input, list, tasks);
             } else if (input.startsWith ("todo")) {
-                if (input.equals ("todo")) {
-                    System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty.");
-                    printLine ();
-                } else {
-                    input = input.replace ("todo ", "");
-                    list.add (input);
-                    tasks[count] = new ToDo (input);
-                    count = printAddTaskMessage (count, list, tasks);
-                }
+                listSize = setToDo (input, listSize, list, tasks);
             } else if (input.startsWith ("event")) {
-                try {
-                    input = input.replace ("event ", "");
-                    int positionIndex = input.indexOf ("/");
-                    String date = input.substring (positionIndex + 1, input.length ());
-                    input = input.substring (0, positionIndex);
-                    tasks[count] = new Event (input, date);
-                    list.add (tasks[count].getDescription ());
-                    count = printAddTaskMessage (count, list, tasks);
-                } catch (StringIndexOutOfBoundsException s) {
-                    System.out.println ("\u2639 " + "OOPS!!! The description of an event cannot be empty.");
-                    printLine ();
-                }
+                listSize = setEvent (input, listSize, list, tasks);
             } else if (input.startsWith ("deadline")) {
-                try {
-                    input = input.replace ("deadline ", "");
-                    int positionIndex = input.indexOf ("/");
-                    String date = input.substring (positionIndex + 1, input.length ());
-                    input = input.substring (0, positionIndex);
-                    tasks[count] = new Deadline (input, date);
-                    list.add (tasks[count].getDescription ());
-                    count = printAddTaskMessage (count, list, tasks);
-                } catch (StringIndexOutOfBoundsException s) {
-                    System.out.println("\u2639 " + "OOPS!!! The description of a deadline cannot be empty.");
-                    printLine ();
-                }
+                listSize = setDeadline (input, listSize, list, tasks);
+            } else if (input.startsWith ("delete")) {
+                listSize = setDelete (input, listSize, list, tasks);
             } else {
                 System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(");
                 printLine();
@@ -93,18 +65,102 @@ public class Duke {
         printBye();
     }
 
-    private static int printAddTaskMessage (int count, ArrayList<String> list, Task[] tasks) {
+    private static int setDelete (String input, int listSize, ArrayList<String> list, Task[] tasks) {
+        try {
+            if (list.size () == 0) {
+                System.out.println ("The list is empty");
+                printLine ();
+            } else {
+                String convertedDeleteInput;
+                int taskNumberToDelete;
+                convertedDeleteInput = input.replaceAll ("[^0-9]", "");//replace all non-number with space
+                taskNumberToDelete = Integer.parseInt (convertedDeleteInput);
+                if (taskNumberToDelete > list.size ()) {
+                    System.out.println ("The task number is out of bound! Please type \"list\"");
+                    printLine ();
+                } else {
+                    listSize = printDeleteMessage (listSize, list, tasks[taskNumberToDelete - 1], taskNumberToDelete);
+                }
+            }
+        } catch (NumberFormatException n) {
+            System.out.println("\u2639 " + "OOPS!!! The task number of delete cannot be empty.");
+            printLine ();
+        }
+        return listSize;
+    }
+
+    private static int setDeadline (String input, int listSize, ArrayList<String> list, Task[] tasks) {
+        try {
+            input = input.replace ("deadline ", "");
+            int positionIndex = input.indexOf ("/");
+            String date = input.substring (positionIndex + 1, input.length ());
+            input = input.substring (0, positionIndex);
+            tasks[listSize] = new Deadline (input, date);
+            list.add (tasks[listSize].getDescription ());
+            listSize = printAddTaskMessage (listSize, list, tasks);
+        } catch (StringIndexOutOfBoundsException s) {
+            System.out.println("\u2639 " + "OOPS!!! The description of a deadline cannot be empty.");
+            printLine ();
+        }
+        return listSize;
+    }
+
+    private static int printDeleteMessage (int listSize, ArrayList<String> list, Task task, int taskNumberToDelete) {
+        System.out.println("Got it. I've removed this task:" );
+        System.out.println("  ["
+                + task.getType()
+                + "]"
+                + "[" + task.getStatusIcon()
+                + "] "
+                + list.get(taskNumberToDelete-1));
+        list.remove (taskNumberToDelete-1);
+        System.out.println("Now you have " + list.size() +" tasks in the list. and deletion happened");
+        listSize--;
+        printLine();
+        return listSize;
+    }
+
+    private static int setEvent (String input, int listSize, ArrayList<String> list, Task[] tasks) {
+        try {
+            input = input.replace ("event ", "");
+            int positionIndex = input.indexOf ("/");
+            String date = input.substring (positionIndex + 1, input.length ());
+            input = input.substring (0, positionIndex);
+            tasks[listSize] = new Event (input, date);
+            list.add (tasks[listSize].getDescription ());
+            listSize = printAddTaskMessage (listSize, list, tasks);
+        } catch (StringIndexOutOfBoundsException s) {
+            System.out.println ("\u2639 " + "OOPS!!! The description of an event cannot be empty.");
+            printLine ();
+        }
+        return listSize;
+    }
+
+    private static int setToDo (String input, int listSize, ArrayList<String> list, Task[] tasks) {
+        if (input.equals ("todo") || input.equals ("todo ")) {
+            System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty.");
+            printLine ();
+        } else {
+            input = input.replace ("todo ", "");
+            list.add (input);
+            tasks[listSize] = new ToDo (input);
+            listSize = printAddTaskMessage (listSize, list, tasks);
+        }
+        return listSize;
+    }
+
+    private static int printAddTaskMessage (int listSize, ArrayList<String> list, Task[] tasks) {
         System.out.println("Got it. I've added this task:" );
         System.out.println("  ["
-                + tasks[count].getType()
+                + tasks[listSize].getType()
                 + "]"
-                + "[" + tasks[count].getStatusIcon()
+                + "[" + tasks[listSize].getStatusIcon()
                 + "] "
-                + list.get(count));
+                + list.get(listSize));
         System.out.println("Now you have " + list.size() +" tasks in the list.");
         printLine();
-        count++;
-        return count;
+        listSize++;
+        return listSize;
     }
 
     private static void setDone(String input, ArrayList<String> list, Task[] tasks) {
@@ -113,19 +169,19 @@ public class Duke {
                 System.out.println ("The list is empty");
                 printLine ();
             } else {
-                String inputNumber;
-                int taskNumber;
-                inputNumber = input.replaceAll ("[^0-9]", "");//replace all non-number with space
-                taskNumber = Integer.parseInt (inputNumber);
-                if (taskNumber > list.size ()) {
+                String convertedSetDoneInput;
+                int taskNumberToBeDone;
+                convertedSetDoneInput = input.replaceAll ("[^0-9]", "");//replace all non-number with space
+                taskNumberToBeDone = Integer.parseInt (convertedSetDoneInput);
+                if (taskNumberToBeDone > list.size ()) {
                     System.out.println ("The task number is out of bound! Please type \"list\"");
                     printLine ();
-                } else if (tasks[taskNumber - 1].isDone == true) {
+                } else if (tasks[taskNumberToBeDone - 1].isDone == true) {
                     System.out.println ("Chill man, this task is completed!");
                     printLine ();
                 } else {
-                    tasks[taskNumber - 1].makeAsDone ();
-                    printDoneMessage (tasks[taskNumber - 1]);
+                    tasks[taskNumberToBeDone - 1].makeAsDone ();
+                    printDoneMessage (tasks[taskNumberToBeDone - 1]);
                     printLine ();
                 }
             }
@@ -172,10 +228,11 @@ public class Duke {
         System.out.println("Available Commands:\n"
                 +"1. list\n"
                 +"2. done (e.g done 1)\n"
-                +"3. todo (e.g todo homework)\n"
-                +"4. event (e.g event meeting /monday 2pm)\n"
-                +"5. deadline (e.g deadline project /monday 2359)\n"
-                +"6. bye\n"
+                +"3. delete (e.g delete 1)\n"
+                +"4. todo (e.g todo homework)\n"
+                +"5. event (e.g event meeting /monday 2pm)\n"
+                +"6. deadline (e.g deadline project /monday 2359)\n"
+                +"7. bye\n"
                 +"p.s all other inputs will be ignored!\n"
                 +"Please enter your command:");
         printLine();
