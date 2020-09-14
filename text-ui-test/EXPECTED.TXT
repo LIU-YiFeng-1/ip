@@ -15,8 +15,22 @@ Available Commands:
 4. event (e.g event meeting /monday 2pm)
 5. deadline (e.g deadline project /monday 2359)
 6. bye
-p.s all other inputs will be added to the list
+p.s all other inputs will be ignored!
 Please enter your command:
+-----------------------------------------------------------------------------
+Importing data from previous record
+.
+.
+.
+.
+please wait :)
+-----------------------------------------------------------------------------
+Done loading past record onto your task list!
+Updating task status based on past record
+updating...
+.
+.
+Done updating! Please type "List" to check!
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
