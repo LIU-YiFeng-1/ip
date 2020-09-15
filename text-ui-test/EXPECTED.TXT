@@ -16,10 +16,6 @@ Available Commands:
 5. event (e.g event meeting /monday 2pm)
 6. deadline (e.g deadline project /monday 2359)
 7. bye
-3. todo (e.g todo homework)
-4. event (e.g event meeting /monday 2pm)
-5. deadline (e.g deadline project /monday 2359)
-6. bye
 p.s all other inputs will be ignored!
 Please enter your command:
 -----------------------------------------------------------------------------

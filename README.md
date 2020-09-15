@@ -30,10 +30,14 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    Available Commands:
    1. list
    2. done (e.g done 1)
-   3. todo (e.g todo homework)
-   4. event (e.g event meeting /monday 2pm)
-   5. deadline (e.g deadline project /monday 2359)
-   6. bye
+   3. delete (e.g delete 1)
+   4. todo (e.g todo homework)
+   5. event (e.g event meeting /monday 2pm)
+   6. deadline (e.g deadline project /monday 2359)
+   7. bye
    p.s all other inputs will be ignored!
    Please enter your command:
    -----------------------------------------------------------------------------
+   
+   If you are running the jar file on Command Prompt, please use the following command:
+   java -Dfile.encoding=UTF-8 -jar .\iP.jar

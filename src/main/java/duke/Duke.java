@@ -17,6 +17,8 @@ public class Duke {
 
     public static final int MAX_CAPACITY = 100;
     public static final int INDEX_PAST_RECORD_STATUS = 4;
+    public static final String pastRecordPath = "./iP/iPoutput.txt";//file path from root file
+
 
     public static void main (String[] args) throws IOException {
         printWelcomeMessage ();
@@ -52,7 +54,6 @@ public class Duke {
 
         //importing pastRecord before reading user commands
         printImportingMessage ();
-        String pastRecordPath = "D:\\NUS\\Year 2 Sem 1\\CS2113T\\iP\\iPoutput.txt";
         File pastRecord = new File (pastRecordPath);
         try {
             Scanner scanner = new Scanner (pastRecord);
