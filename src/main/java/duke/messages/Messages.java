@@ -3,8 +3,6 @@ package duke.messages;
 import duke.tasks.Task;
 import duke.tasks.TaskList;
 
-import java.util.ArrayList;
-
 public class Messages {
 
     public static final String SAD_FACE_EMOJI = "\u2639 ";
@@ -21,8 +19,10 @@ public class Messages {
     }
 
     public static void printGreeting() {
-        String greeting = "Hello! I'm Duke\n" + "What can I do for you?\n";
-        System.out.print(greeting);
+        System.out.println("Hello! I'm Duke");
+        printImportingMessage();
+        printDoneLoadingMessage();
+        System.out.println("Type [help] to view available commands!");;
         printLine();
     }
 
@@ -32,6 +32,8 @@ public class Messages {
                 + "updating...\n"
                 + ".\n"
                 + ".\n"
+                + ".\n"
+                + ".\n"
                 + "Done updating! Please type \"List\" to check!");
         printLine();
     }
@@ -39,10 +41,10 @@ public class Messages {
     public static void printImportingMessage() {
         System.out.println("Importing data from previous record"
                 + System.lineSeparator()
-                + "." + System.lineSeparator()
-                + "." + System.lineSeparator()
-                + "." + System.lineSeparator()
-                + "." + System.lineSeparator()
+                + ".\n"
+                + ".\n"
+                + ".\n"
+                + ".\n"
                 + "please wait :)");
         printLine();
     }
@@ -55,7 +57,6 @@ public class Messages {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         printGreeting();
-        printAvailableCommands();
     }
 
     public static void printAvailableCommands() {

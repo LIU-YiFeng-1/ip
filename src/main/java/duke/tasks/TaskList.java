@@ -9,14 +9,6 @@ public class TaskList {
         taskList = new ArrayList<Task>();
     }
 
-//    public void getAllTasks() {
-//        for (int i = 0; i < taskList.size(); i++) {
-//            System.out.println(i + 1 + ".[" + taskList.get(i).getType() + "]"
-//                    + "[" + taskList.get(i).getStatusIcon() + "] "
-//                    + taskList.get(i).getDescription());
-//        }
-//    }
-
     public void addTask(Task t) {
         taskList.add(t);
     }

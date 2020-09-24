@@ -1,0 +1,3 @@
+T | 0 | reading a book
+E | 0 | reading a book (sunday ngiht)
+D | 0 | reading a book (sunday night)

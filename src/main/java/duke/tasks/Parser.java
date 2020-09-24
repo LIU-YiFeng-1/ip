@@ -1,9 +1,9 @@
 package duke.tasks;
 
+import duke.Storage;
 import duke.messages.Messages;
 
-import javax.swing.*;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class Parser {
     public static final int LENGTH_FOR_LIST_COMMAND = 4;
@@ -36,12 +36,13 @@ public class Parser {
                 if (userInput.trim().length() > LENGTH_FOR_BYE_COMMAND) {
                     Messages.printInvalidInput();
                 } else {
+                    Storage.saveData(taskList);
                     Messages.printBye();
                     isRun = false;
                 }
                 break;
             case "todo":
-                taskDescription = convertedUserInput[1];
+                taskDescription = userInput.toLowerCase().replace("todo ", "");
                 if (taskDescription.trim().equals(EMPTY_TASK_DESCRIPTION)) {
                     Messages.printEmptyTodoError();
                 } else {
@@ -50,11 +51,15 @@ public class Parser {
                 }
                 break;
             case "event":
-                if (convertedUserInput[1].contains("/")) {
-                    taskDescription = getTaskDescription(convertedUserInput[1]);
-                    taskDate = getTaskDate(convertedUserInput[1]);
+                taskDescription = userInput.toLowerCase().replace("event ", "");
+                if (taskDescription.contains("/")) {
+                    int splitterIndex;
+                    splitterIndex = taskDescription.indexOf("/");
+                    String correctedTaskDescription;
+                    correctedTaskDescription = taskDescription.substring(0, splitterIndex);
+                    taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
                     try {
-                        taskList.addTask(new Event(taskDescription, taskDate));
+                        taskList.addTask(new Event(correctedTaskDescription, taskDate));
                         Messages.printTaskAddedMessage(taskList);
                     } catch (StringIndexOutOfBoundsException s) {
                         Messages.printEmptyEventError();
@@ -64,14 +69,18 @@ public class Parser {
                 }
                 break;
             case "deadline":
-                if (convertedUserInput[1].contains("/")) {
-                    taskDescription = getTaskDescription(convertedUserInput[1]);
-                    taskDate = getTaskDate(convertedUserInput[1]);
+                taskDescription = userInput.toLowerCase().replace("deadline ", "");
+                if (taskDescription.contains("/")) {
+                    int splitterIndex;
+                    splitterIndex = taskDescription.indexOf("/");
+                    String correctedTaskDescription;
+                    correctedTaskDescription = taskDescription.substring(0, splitterIndex);
+                    taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
                     try {
-                        taskList.addTask(new Deadline(taskDescription, taskDate));
+                        taskList.addTask(new Deadline(correctedTaskDescription, taskDate));
                         Messages.printTaskAddedMessage(taskList);
                     } catch (StringIndexOutOfBoundsException s) {
-                        Messages.printEmptyDeadlineError();
+                        Messages.printEmptyEventError();
                     }
                 } else {
                     Messages.printCommandFormatError();
@@ -123,17 +132,9 @@ public class Parser {
                 Messages.printInvalidInput();
                 break;
             }
-        } catch (ArrayIndexOutOfBoundsException a) {
+        } catch (ArrayIndexOutOfBoundsException | IOException a) {
             Messages.printCommandFormatError();
         }
-    }
-
-    public static String getTaskDescription(String input) {
-        String[] output;
-        String correctedTaskDescription;
-        output = input.trim().split("/");
-        correctedTaskDescription = output[0].trim();
-        return correctedTaskDescription;
     }
 
     public static String getTaskDate(String input) {

@@ -26,4 +26,8 @@ public class Task {
     public String getDescription() {
         return description;
     }
+
+    public String saveData() {
+        return null;
+    }
 }
