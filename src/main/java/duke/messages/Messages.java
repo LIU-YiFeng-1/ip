@@ -1,9 +1,14 @@
 package duke.messages;
 
 import duke.tasks.Task;
+import duke.tasks.TaskList;
+
 import java.util.ArrayList;
 
 public class Messages {
+
+    public static final String SAD_FACE_EMOJI = "\u2639 ";
+
     public static void printLine() {
         System.out.println("----------------------------------"
                 + "-------------------------------------------");
@@ -11,6 +16,8 @@ public class Messages {
 
     public static void printBye() {
         System.out.println("Bye. Hope to see you again soon!");
+        printLine();
+        printLine();
     }
 
     public static void printGreeting() {
@@ -48,6 +55,10 @@ public class Messages {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         printGreeting();
+        printAvailableCommands();
+    }
+
+    public static void printAvailableCommands() {
         System.out.println("Available Commands:\n"
                 + "1. list\n"
                 + "2. done (e.g done 1)\n"
@@ -69,22 +80,84 @@ public class Messages {
                 + "["
                 + task.getStatusIcon()
                 + "] " + task.getDescription());
+        printLine();
     }
 
-    public static void printList(ArrayList<String> list, Task[] tasks) {
-        if (list.size() == 0) {
-            System.out.println("The list is empty");
+    public static void printAllTasks(TaskList taskList) {
+        for (int i = 0; i < taskList.getSize(); i++) {
+            System.out.println(i + 1 + ".[" + taskList.getTask(i).getType() + "]"
+                    + "[" + taskList.getTask(i).getStatusIcon() + "] "
+                    + taskList.getTask(i).getDescription());
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(i + 1
-                    + ".["
-                    + tasks[i].getType()
-                    + "]"
-                    + "["
-                    + tasks[i].getStatusIcon()
-                    + "] "
-                    + list.get(i));
-        }
+        printLine();
+    }
+
+    public static void printEmptyTodoError() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of a todo cannot be empty.");
+        Messages.printLine();
+    }
+
+    public static void printEmptyEventError() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of an event cannot be empty.");
+        Messages.printLine();
+    }
+
+    public static void printEmptyDeadlineError() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of a deadline cannot be empty.");
+        Messages.printLine();
+    }
+
+    public static void printEmptyDeleteError() {
+        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be deleted cannot be empty.");
+        Messages.printLine();
+    }
+    public static void printEmptyDoneError() {
+        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be done cannot be empty.");
+        Messages.printLine();
+    }
+
+
+    public static void printTaskAddedMessage(TaskList taskList) {
+        System.out.println("Got it. I've added this task:");
+        System.out.println("  [" + taskList.getTask(taskList.getSize()-1).getType() + "]"
+                + "[" + taskList.getTask(taskList.getSize()-1).getStatusIcon() + "] "
+                + taskList.getTask(taskList.getSize()-1).getDescription());
+        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
+        Messages.printLine();
+    }
+
+    public static void printTaskDeletedMessage(TaskList taskList, int taskNumberToDelete) {
+        System.out.println("Got it. I've removed this task:");
+        System.out.println("  [" + taskList.getTask(taskNumberToDelete - 1).getType()
+
+                + "]" + "[" + taskList.getTask(taskNumberToDelete - 1).getStatusIcon() + "] " + taskList.getTask(taskNumberToDelete - 1).getDescription());
+        taskList.deleteTask(taskNumberToDelete - 1);
+        System.out.println("Now you have " + taskList.getSize() + " tasks in the list. and deletion happened");
+        Messages.printLine();
+    }
+
+    public static void printIndexOutOfBoundMessage() {
+        System.out.println("The task number is out of bound! Please type \"list\"");
+        Messages.printLine();
+    }
+
+    public static void printInvalidInput() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! I'm sorry, but I don't know what that means :-(");
+        printLine();
+    }
+
+    public static void printEmptyListMessage() {
+        System.out.println("The list is empty");
+        printLine();
+    }
+
+    public static void printTaskAlreadyDoneMessage() {
+        System.out.println("Chill man, this task is completed!");
+        Messages.printLine();
+    }
+
+    public static void printCommandFormatError() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong input format. Please type help to see command examples");
         printLine();
     }
 }
