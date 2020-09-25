@@ -64,6 +64,15 @@ public class Task {
     }
 
     /**
+     * Returns the description of the task.
+     *
+     * @return description Task description.
+     */
+    public String getDescriptionForFind() {
+        return description;
+    }
+
+    /**
      * Saves the task in a pre-determined format when writing to a file.
      * Will be overridden by the type of tasks.
      *
