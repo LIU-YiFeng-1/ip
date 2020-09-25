@@ -25,20 +25,26 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    |____/ \__,_|_|\_\___|
    
    Hello! I'm Duke
-   What can I do for you?
+   Importing data from previous record
+   .
+   .
+   .
+   .
+   please wait :)
    -----------------------------------------------------------------------------
-   Available Commands:
-   1. list
-   2. done (e.g done 1)
-   3. delete (e.g delete 1)
-   4. todo (e.g todo homework)
-   5. event (e.g event meeting /monday 2pm)
-   6. deadline (e.g deadline project /monday 2359)
-   7. bye
-   p.s all other inputs will be ignored!
-   Please enter your command:
+   Done loading past record onto your task list!
+   Updating task status based on past record
+   updating...
+   .
+   .
+   .
+   .
+   Done updating! Please type "List" to check!
+   -----------------------------------------------------------------------------
+   Type [help] to view available commands!
    -----------------------------------------------------------------------------
    
-   If you are running the jar file on Command Prompt, please use the following command:
-   chcp 65001
-   java -Dfile.encoding=UTF-8 -jar .\iP.jar
+ ## Running jar file on Command Prompt
+ If you are running the jar file on Command Prompt, please use the following command:
+ chcp 65001
+ java -Dfile.encoding=UTF-8 -jar .\iP.jar
