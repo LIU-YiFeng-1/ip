@@ -31,6 +31,16 @@ public class Deadline extends Task {
     }
 
     /**
+     * Returns the description of the event.
+     *
+     * @return event description.
+     */
+    @Override
+    public String getDescriptionForFind() {
+        return description + date ;
+    }
+
+    /**
      * Returns the respective task type.
      *
      * @return D Default task type for deadline.

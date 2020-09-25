@@ -1,1 +1,4 @@
 T | 0 |  reading a book
+T | 0 |  read a book
+E | 0 |  briefing ( sunday)
+D | 1 |  project (sunday morning)

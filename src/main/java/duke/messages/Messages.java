@@ -115,6 +115,30 @@ public class Messages {
         printLine();
     }
 
+
+    /**
+     * Prints all stored tasks which contain the key word.
+     *
+     * @param taskList TaskList which contains all stored tasks.
+     * @param keyword User defined key word which is to be searched through all tasks.
+     */
+    public static void printFoundTasks(TaskList taskList, String keyword) {
+        int numberOfFoundTasks = 0;
+        System.out.println("Searching for matching tasks in your list\n");
+        for (int i = 0; i < taskList.getSize(); i++) {
+            if (taskList.getTask(i).getDescriptionForFind().contains(keyword)) {
+                numberOfFoundTasks++;
+                System.out.println(numberOfFoundTasks + ".[" + taskList.getTask(i).getType() + "]"
+                        + "[" + taskList.getTask(i).getStatusIcon() + "] "
+                        + taskList.getTask(i).getDescription());
+            }
+        }
+        if (numberOfFoundTasks == 0) {
+            System.out.println(SAD_FACE_EMOJI + "There is no matching task with" + keyword);
+        }
+        printLine();
+    }
+
     /** Prints an error message when user input empty ToDo task. */
     public static void printEmptyTodoError() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of a todo cannot be empty.");
@@ -142,6 +166,12 @@ public class Messages {
     /** Prints an error message when user did not input task number to be marked as done. */
     public static void printEmptyDoneError() {
         System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be done cannot be empty.");
+        Messages.printLine();
+    }
+
+    /** Prints an error message when user did not input find key word. */
+    public static void printEmptyFindError() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The find keyword cannot be empty.");
         Messages.printLine();
     }
 

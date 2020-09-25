@@ -3,6 +3,8 @@ package duke.tasks;
 import duke.Storage;
 import duke.messages.Messages;
 import java.io.IOException;
+import static java.util.stream.Collectors.toList;
+
 
 /**
  * Parser class which helps to decode and execute the user command.
@@ -71,6 +73,7 @@ public class Parser {
         String taskType;
         String taskDescription;
         String taskDate;
+        String findKeyWord;
         int taskIndex;
 
         convertedUserInput = userInput.trim().split(EMPTY_SPACE);
@@ -184,8 +187,12 @@ public class Parser {
                 }
                 break;
             case COMMAND_FIND:
-                System.out.println("this is finding some keyword, not implemented yet.");
-                Messages.printLine();
+                findKeyWord = userInput.toLowerCase().trim().replace(COMMAND_FIND, EMPTY_INPUT);
+                if (findKeyWord.trim().equals(EMPTY_INPUT)) {
+                    Messages.printEmptyFindError();
+                } else {
+                    Messages.printFoundTasks(taskList, findKeyWord);
+                }
                 break;
             case COMMAND_HELP:
                 Messages.printAvailableCommands();

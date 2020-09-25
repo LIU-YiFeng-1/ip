@@ -31,6 +31,16 @@ public class Event extends Task {
     }
 
     /**
+     * Returns the description of the event.
+     *
+     * @return event description.
+     */
+    @Override
+    public String getDescriptionForFind() {
+        return description + date ;
+    }
+
+    /**
      * Returns the respective task type.
      *
      * @return E Default task type for event.
