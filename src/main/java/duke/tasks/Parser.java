@@ -58,6 +58,7 @@ public class Parser {
      * - else program marks the task at the given index as done and print task done message.
      * 8. If the user input contains "find",
      * - prints an empty find message if there is no find keyword,
+     * - or prints a message to indicate no matching task,
      * - else program prints all tasks containing the keyword.
      * 9. If the user input is "help",
      * - prints all available commands for the program.
