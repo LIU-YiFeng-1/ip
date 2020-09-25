@@ -3,6 +3,9 @@ package duke.messages;
 import duke.tasks.Task;
 import duke.tasks.TaskList;
 
+/**
+ * Messages class which deals with user interaction.
+ */
 public class Messages {
 
     public static final String SAD_FACE_EMOJI = "\u2639 ";
@@ -215,5 +218,10 @@ public class Messages {
     public static void printCommandFormatError() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong input format. Please type help to see command examples");
         printLine();
+    }
+    /** Prints a message when Duke_output.txt has no content. */
+    public static void printNoPastRecordMessage() {
+        System.out.println("There is no past record! You are a 1st time user");
+        Messages.printLine();
     }
 }

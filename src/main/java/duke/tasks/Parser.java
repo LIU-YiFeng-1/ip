@@ -8,9 +8,22 @@ import java.io.IOException;
  * Parser class which helps to decode and execute the user command.
  */
 public class Parser {
+    public static final int EMPTY_LIST_SIZE = 0;
     public static final int LENGTH_FOR_LIST_COMMAND = 4;
     public static final int LENGTH_FOR_BYE_COMMAND = 3;
     public static final String EMPTY_INPUT = "";
+    public static final String EMPTY_SPACE = " ";
+    public static final String COMMAND_LIST = "list";
+    public static final String COMMAND_BYE = "bye";
+    public static final String COMMAND_TODO = "todo";
+    public static final String COMMAND_EVENT = "event";
+    public static final String COMMAND_DEADLINE = "deadline";
+    public static final String COMMAND_DELETE = "delete";
+    public static final String COMMAND_DONE = "done";
+    public static final String COMMAND_FIND = "find";
+    public static final String COMMAND_HELP = "help";
+    public static final String COMMAND_SAVE = "save";
+    public static final String SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE = "/";
 
     private static boolean isRun = true;
 
@@ -60,20 +73,20 @@ public class Parser {
         String taskDate;
         int taskIndex;
 
-        convertedUserInput = userInput.trim().split(" ");
+        convertedUserInput = userInput.trim().split(EMPTY_SPACE);
         taskType = convertedUserInput[0];
         try {
             switch (taskType.toLowerCase()) {
-            case "list":
+            case COMMAND_LIST:
                 if (userInput.trim().length() > LENGTH_FOR_LIST_COMMAND) {
                     Messages.printInvalidInput();
-                } else if (taskList.getSize() == 0) {
+                } else if (taskList.getSize() == EMPTY_LIST_SIZE) {
                     Messages.printEmptyListMessage();
                 } else {
                     Messages.printAllTasks(taskList);
                 }
                 break;
-            case "bye":
+            case COMMAND_BYE:
                 if (userInput.trim().length() > LENGTH_FOR_BYE_COMMAND) {
                     Messages.printInvalidInput();
                 } else {
@@ -82,8 +95,8 @@ public class Parser {
                     isRun = false;
                 }
                 break;
-            case "todo":
-                taskDescription = userInput.toLowerCase().trim().replace("todo", "");
+            case COMMAND_TODO:
+                taskDescription = userInput.toLowerCase().trim().replace(COMMAND_TODO, EMPTY_INPUT);
                 if (taskDescription.trim().equals(EMPTY_INPUT)) {
                     Messages.printEmptyTodoError();
                 } else {
@@ -91,11 +104,11 @@ public class Parser {
                     Messages.printTaskAddedMessage(taskList);
                 }
                 break;
-            case "event":
-                taskDescription = userInput.toLowerCase().trim().replace("event", "");
-                if (taskDescription.contains("/")) {
+            case COMMAND_EVENT:
+                taskDescription = userInput.toLowerCase().trim().replace(COMMAND_EVENT, EMPTY_INPUT);
+                if (taskDescription.contains(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE)) {
                     int splitterIndex;
-                    splitterIndex = taskDescription.indexOf("/");
+                    splitterIndex = taskDescription.indexOf(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
                     String correctedTaskDescription;
                     correctedTaskDescription = taskDescription.substring(0, splitterIndex);
                     taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
@@ -113,11 +126,11 @@ public class Parser {
                     Messages.printCommandFormatError();
                 }
                 break;
-            case "deadline":
-                taskDescription = userInput.toLowerCase().trim().replace("deadline ", "");
-                if (taskDescription.contains("/")) {
+            case COMMAND_DEADLINE:
+                taskDescription = userInput.toLowerCase().trim().replace(COMMAND_DEADLINE, EMPTY_INPUT);
+                if (taskDescription.contains(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE)) {
                     int splitterIndex;
-                    splitterIndex = taskDescription.indexOf("/");
+                    splitterIndex = taskDescription.indexOf(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
                     String correctedTaskDescription;
                     correctedTaskDescription = taskDescription.substring(0, splitterIndex);
                     taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
@@ -135,9 +148,9 @@ public class Parser {
                     Messages.printCommandFormatError();
                 }
                 break;
-            case "delete":
+            case COMMAND_DELETE:
                 try {
-                    if (taskList.getSize() == 0) {
+                    if (taskList.getSize() == EMPTY_LIST_SIZE) {
                         Messages.printEmptyListMessage();
                     } else {
                         taskIndex = getTaskIndex(convertedUserInput[1]);
@@ -151,9 +164,9 @@ public class Parser {
                     Messages.printEmptyDeleteError();
                 }
                 break;
-            case "done":
+            case COMMAND_DONE:
                 try {
-                    if (taskList.getSize() == 0) {
+                    if (taskList.getSize() == EMPTY_LIST_SIZE) {
                         Messages.printEmptyListMessage();
                     } else {
                         taskIndex = getTaskIndex(convertedUserInput[1]);
@@ -170,14 +183,14 @@ public class Parser {
                     Messages.printEmptyDoneError();
                 }
                 break;
-            case "find":
+            case COMMAND_FIND:
                 System.out.println("this is finding some keyword, not implemented yet.");
                 Messages.printLine();
                 break;
-            case "help":
+            case COMMAND_HELP:
                 Messages.printAvailableCommands();
                 break;
-            case "save":
+            case COMMAND_SAVE:
                 Storage.saveData(taskList);
                 break;
             default:
@@ -189,14 +202,26 @@ public class Parser {
         }
     }
 
+    /**
+     * Returns the corrected task date from the user input.
+     *
+     * @param input User input for the program.
+     * @return correctedTaskDate Task date which is used for creation of event or deadline task.
+     */
     public static String getTaskDate(String input) {
         String[] output;
         String correctedTaskDate;
-        output = input.trim().split("/");
+        output = input.trim().split(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
         correctedTaskDate = output[1].trim();
         return correctedTaskDate;
     }
 
+    /**
+     * Returns a task index which will be used for task deletion or marking the task done.
+     *
+     * @param input User input for the program.
+     * @return index Task index which is used for task deletion or marking done.
+     */
     public static int getTaskIndex(String input) {
         String convertedInput;
         int index;
@@ -205,6 +230,12 @@ public class Parser {
         return index;
     }
 
+    /**
+     * Returns the status of the program.
+     * The program will keep taking user input unless COMMAND_BYE is detected.
+     *
+     * @return isRun Status tracker for the program.
+     */
     public static boolean getRunStatus() {
         return isRun;
     }
