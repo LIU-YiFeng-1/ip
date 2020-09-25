@@ -117,6 +117,12 @@ public class Storage {
         bufferedWriter.close();
     }
 
+    /**
+     * Returns the index of the ending of the task description.
+     *
+     * @param content Saved input from Duke_output.txt.
+     * @return taskDescriptionEndIndex Index of the ending of the task description.
+     */
     private static int getTaskDescriptionEndIndex(String content) {
         int taskDescriptionEndIndex;
         taskDescriptionEndIndex = content.indexOf(TASK_DESCRIPTION_END_INDICATOR);
