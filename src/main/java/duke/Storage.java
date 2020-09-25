@@ -83,7 +83,6 @@ public class Storage {
             bufferedWriter.close();
             System.out.println("file close without saving as there is nothing to save!");
         } else {
-            System.out.println("file saved");
             for (int i = 0; i < taskList.getSize(); i++) {
                 if (taskList.getTask(i).getStatusIcon().equals(STATUS_DONE)) {
                     bufferedWriter.write(taskList.getTask(i).saveData() + "\n");
@@ -91,6 +90,8 @@ public class Storage {
                     bufferedWriter.write(taskList.getTask(i).saveData() + "\n");
                 }
             }
+            System.out.println("file saved");
+            Messages.printLine();
         }
         bufferedWriter.close();
     }

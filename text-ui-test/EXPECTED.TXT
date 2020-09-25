@@ -6,19 +6,6 @@ Hello from
 |____/ \__,_|_|\_\___|
 
 Hello! I'm Duke
-What can I do for you?
------------------------------------------------------------------------------
-Available Commands:
-1. list
-2. done (e.g done 1)
-3. delete (e.g delete 1)
-4. todo (e.g todo homework)
-5. event (e.g event meeting /monday 2pm)
-6. deadline (e.g deadline project /monday 2359)
-7. bye
-p.s all other inputs will be ignored!
-Please enter your command:
------------------------------------------------------------------------------
 Importing data from previous record
 .
 .
@@ -31,15 +18,17 @@ Updating task status based on past record
 updating...
 .
 .
+.
+.
 Done updating! Please type "List" to check!
 -----------------------------------------------------------------------------
-The list is empty
+Type [help] to view available commands!
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
-☹ OOPS!!! I'm sorry, but I don't know what that means :-(
+The list is empty
 -----------------------------------------------------------------------------
 ☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 -----------------------------------------------------------------------------
@@ -72,16 +61,32 @@ Got it. I've removed this task:
 Now you have 3 tasks in the list. and deletion happened
 -----------------------------------------------------------------------------
 1.[T][✓] reading
-2.[T][✘] win toto(tmr)
-3.[E][✘] win toto(tmr)
+2.[E][✘] win toto(tmr)
+3.[D][✘] win toto(tmr)
 -----------------------------------------------------------------------------
 Got it. I've added this task:
   [T][✘] againah?
 Now you have 4 tasks in the list.
 -----------------------------------------------------------------------------
-1.[T][✓] reading
-2.[T][✘] win toto(tmr)
-3.[E][✘] win toto(tmr)
-4.[T][✘] againah?
+Got it. I've removed this task:
+  [T][✓] reading
+Now you have 3 tasks in the list. and deletion happened
 -----------------------------------------------------------------------------
+Got it. I've removed this task:
+  [E][✘] win toto(tmr)
+Now you have 2 tasks in the list. and deletion happened
+-----------------------------------------------------------------------------
+Got it. I've removed this task:
+  [D][✘] win toto(tmr)
+Now you have 1 tasks in the list. and deletion happened
+-----------------------------------------------------------------------------
+Got it. I've removed this task:
+  [T][✘] againah?
+Now you have 0 tasks in the list. and deletion happened
+-----------------------------------------------------------------------------
+The list is empty
+-----------------------------------------------------------------------------
+file close without saving as there is nothing to save!
 Bye. Hope to see you again soon!
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------

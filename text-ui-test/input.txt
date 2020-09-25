@@ -2,7 +2,6 @@ list
 done
 delete
 asdhaksdhj
-hi can you
 todo reading
 todo watching drama
 event win toto/tmr
@@ -12,5 +11,9 @@ done 1
 delete 2
 list
 todo againah?
-list
+delete 1
+delete 1
+delete 1
+delete 1
+delete 1
 bye

@@ -30,12 +30,11 @@ public class Duke {
         String userInput;
     //using Parser.parser to make sense of user input and perform the task accordingly
         Scanner in = new Scanner(System.in);
-        userInput = in.nextLine();
 
-        while (Parser.getRunStatus()) {
-            Parser.parser(userInput, taskList);
+        do {
             userInput = in.nextLine();
-        }
+            Parser.parser(userInput, taskList);
+        } while (Parser.getRunStatus());
     }
 }
 

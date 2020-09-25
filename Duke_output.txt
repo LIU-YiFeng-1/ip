@@ -1,3 +1,5 @@
 T | 0 | reading a book
-E | 0 | reading a book (sunday ngiht)
+E | 1 | reading a book (sunday ngiht)
 D | 0 | reading a book (sunday night)
+T | 0 | reading asd a sd
+D | 0 | meeting (sunday 238)

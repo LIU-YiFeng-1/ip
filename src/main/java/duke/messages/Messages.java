@@ -7,17 +7,20 @@ public class Messages {
 
     public static final String SAD_FACE_EMOJI = "\u2639 ";
 
+    /** Prints a dotted line to separate the content. */
     public static void printLine() {
         System.out.println("----------------------------------"
                 + "-------------------------------------------");
     }
 
+    /** Prints a good bye message to the user. */
     public static void printBye() {
         System.out.println("Bye. Hope to see you again soon!");
         printLine();
         printLine();
     }
 
+    /** Prints a greeting message to the user. */
     public static void printGreeting() {
         System.out.println("Hello! I'm Duke");
         printImportingMessage();
@@ -26,6 +29,7 @@ public class Messages {
         printLine();
     }
 
+    /** Prints a message to inform the user that the past record has been loaded. */
     public static void printDoneLoadingMessage() {
         System.out.println("Done loading past record onto your task list!\n"
                 + "Updating task status based on past record\n"
@@ -38,6 +42,7 @@ public class Messages {
         printLine();
     }
 
+    /** Prints a data loading message to the user. */
     public static void printImportingMessage() {
         System.out.println("Importing data from previous record"
                 + System.lineSeparator()
@@ -49,6 +54,7 @@ public class Messages {
         printLine();
     }
 
+    /** Prints a welcome message to the user. */
     public static void printWelcomeMessage() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -59,6 +65,7 @@ public class Messages {
         printGreeting();
     }
 
+    /** Prints all available commands to the user. */
     public static void printAvailableCommands() {
         System.out.println("Available Commands:\n"
                 + "1. list\n"
@@ -67,12 +74,19 @@ public class Messages {
                 + "4. todo (e.g todo homework)\n"
                 + "5. event (e.g event meeting /monday 2pm)\n"
                 + "6. deadline (e.g deadline project /monday 2359)\n"
-                + "7. bye\n"
+                + "7. find (e.g find monday)\n"
+                + "8. save\n"
+                + "9. bye\n"
                 + "p.s all other inputs will be ignored!\n"
                 + "Please enter your command:");
         printLine();
     }
 
+    /**
+     * Prints a task done message to the user.
+     *
+     * @param task Task which to be marked done.
+     */
     public static void printDoneMessage(Task task) {
         System.out.println("Nice! I've marked this task as done:\n"
                 + "  ["
@@ -84,6 +98,11 @@ public class Messages {
         printLine();
     }
 
+    /**
+     * Prints all stored tasks in the task list.
+     *
+     * @param taskList TaskList which contains all stored tasks.
+     */
     public static void printAllTasks(TaskList taskList) {
         for (int i = 0; i < taskList.getSize(); i++) {
             System.out.println(i + 1 + ".[" + taskList.getTask(i).getType() + "]"
@@ -93,31 +112,41 @@ public class Messages {
         printLine();
     }
 
+    /** Prints an error message when user input empty ToDo task. */
     public static void printEmptyTodoError() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of a todo cannot be empty.");
         Messages.printLine();
     }
 
+    /** Prints an error message when user input empty Event task. */
     public static void printEmptyEventError() {
-        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of an event cannot be empty.");
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description / date of an event cannot be empty.");
         Messages.printLine();
     }
 
+    /** Prints an error message when user input empty Deadline task. */
     public static void printEmptyDeadlineError() {
-        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description of a deadline cannot be empty.");
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! The description / date of a deadline cannot be empty.");
         Messages.printLine();
     }
 
+    /** Prints an error message when user did not input task number to be deleted. */
     public static void printEmptyDeleteError() {
         System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be deleted cannot be empty.");
         Messages.printLine();
     }
+
+    /** Prints an error message when user did not input task number to be marked as done. */
     public static void printEmptyDoneError() {
         System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be done cannot be empty.");
         Messages.printLine();
     }
 
-
+    /**
+     * Prints a message to indicate a task is added successfully.
+     *
+     * @param taskList TaskList which contains all stored tasks.
+     */
     public static void printTaskAddedMessage(TaskList taskList) {
         System.out.println("Got it. I've added this task:");
         System.out.println("  [" + taskList.getTask(taskList.getSize()-1).getType() + "]"
@@ -127,6 +156,12 @@ public class Messages {
         Messages.printLine();
     }
 
+    /**
+     * Prints a message to indicate a task is added successfully.
+     *
+     * @param taskList TaskList which contains all stored tasks.
+     * @param taskNumberToDelete Index of task to be deleted.
+     */
     public static void printTaskDeletedMessage(TaskList taskList, int taskNumberToDelete) {
         System.out.println("Got it. I've removed this task:");
         System.out.println("  [" + taskList.getTask(taskNumberToDelete - 1).getType()
@@ -137,26 +172,46 @@ public class Messages {
         Messages.printLine();
     }
 
+    /**
+     * Prints an error message when the index of task to be deleted
+     * or marked as done is larger than the size of the list.
+     */
     public static void printIndexOutOfBoundMessage() {
         System.out.println("The task number is out of bound! Please type \"list\"");
         Messages.printLine();
     }
 
+    /**
+     * Prints an error message when the user input is different from the available commands.
+     * Available commands are as follows:
+     * 1. list
+     * 2. done (e.g done 1)
+     * 3. delete (e.g delete 1)
+     * 4. todo (e.g todo homework)
+     * 5. event (e.g event meeting /monday 2pm)
+     * 6. deadline (e.g deadline project /monday 2359)
+     * 7. find (e.g find monday)
+     * 8. save
+     * 9. bye
+     */
     public static void printInvalidInput() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! I'm sorry, but I don't know what that means :-(");
         printLine();
     }
 
+    /** Prints a message to indicate that there is no task in the list. */
     public static void printEmptyListMessage() {
         System.out.println("The list is empty");
         printLine();
     }
 
+    /** Prints a message to indicate that the task to be marked as done is already done. */
     public static void printTaskAlreadyDoneMessage() {
         System.out.println("Chill man, this task is completed!");
         Messages.printLine();
     }
 
+    /** Prints an error message when user input is not following the correct command format. */
     public static void printCommandFormatError() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong input format. Please type help to see command examples");
         printLine();
