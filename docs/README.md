@@ -44,7 +44,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    -----------------------------------------------------------------------------
    
  ## Running jar file on Command Prompt
- If you are running the jar file on Command Prompt, please use the following command:
+ If you are running the jar file on Windows Command Prompt, please use the following command:
 
  chcp 65001
  
@@ -79,7 +79,7 @@ todo | creates a todo task with the given task description
 
 `<must have content>` - this is the parameter that you must supply to the program. E.g `todo <task description>`
 
-`[may have content]` -this is the parameter that you may want to supply to the program. E.g `event <task description> /<task date> [task time]`
+`[may have content]` -this is the parameter that you may want to supply to the program. E.g `event <task description> /at <task date> [task time]`
 #### __Bye__
 Terminates the program and saves all available tasks into `~/data/duke.txt`
 ##### Syntax
@@ -87,7 +87,7 @@ Terminates the program and saves all available tasks into `~/data/duke.txt`
 #### __deadline__ 
 Creates a deadline task with the given task description and task date
 ##### Syntax
-`deadline <task description> /<task date> [task time]`
+`deadline <task description> /by <task date> [task time]`
 
 `<task description>` - description of the task that has a deadline. E.g project submission
 
@@ -95,9 +95,9 @@ Creates a deadline task with the given task description and task date
 
 `[task time]` - exact time of the deadline that is due. E.g 2359
 ##### Example
-`deadline project submission /3 Oct` - creates a deadline task called "project submission" that is due on 3 Oct
+`deadline project submission /by 3 Oct` - creates a deadline task called "project submission" that is due on 3 Oct
 
-`deadline project submission /3 Oct 2359` - - creates a deadline task called "project submission" that is due on 3 Oct, 2359
+`deadline project submission /by 3 Oct 2359` - - creates a deadline task called "project submission" that is due on 3 Oct, 2359
 #### __delete__ 
 Deletes a specific task from the task list based on the given task index
 ##### Syntax
@@ -117,7 +117,7 @@ Mark a specific task from the task list as done, based on the given task index
 #### __event__ 
 Creates an event task with the given task description and task date
 ##### Syntax
-`event <task description> /<task date> [task time]`
+`event <task description> /at <task date> [task time]`
 
 `<task description>` - description of the task that is happening on certain date. E.g CNY celebration
 
@@ -125,9 +125,9 @@ Creates an event task with the given task description and task date
 
 `[task time]` - exact time of the event that is happening. E.g 2359
 ##### Example
-`event CNY celebration /13 Feb` - creates an event task called "CNY celebration" that is happening on 13 Feb
+`event CNY celebration /at 13 Feb` - creates an event task called "CNY celebration" that is happening on 13 Feb
 
-`event CNY celebration /13 Feb 10pm` - creates an event task called "CNY celebration" that is happening on 13 Feb 10pm
+`event CNY celebration /at 13 Feb 10pm` - creates an event task called "CNY celebration" that is happening on 13 Feb 10pm
 #### __help__ 
 Prints out the available commands in _Duke_
 ##### Syntax

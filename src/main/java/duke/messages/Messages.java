@@ -75,8 +75,8 @@ public class Messages {
                 + "2. done (e.g done 1)\n"
                 + "3. delete (e.g delete 1)\n"
                 + "4. todo (e.g todo homework)\n"
-                + "5. event (e.g event meeting /monday 2pm)\n"
-                + "6. deadline (e.g deadline project /monday 2359)\n"
+                + "5. event (e.g event meeting /at monday 2pm)\n"
+                + "6. deadline (e.g deadline project /by monday 2359)\n"
                 + "7. find (e.g find monday)\n"
                 + "8. save\n"
                 + "9. bye\n"
@@ -124,13 +124,16 @@ public class Messages {
      */
     public static void printFoundTasks(TaskList taskList, String keyword) {
         int numberOfFoundTasks = 0;
-        System.out.println("Searching for matching tasks in your list\n");
+        System.out.println("Searching for matching tasks in your list:\n");
+        System.out.println("To perform done or delete command, refer to the task index number\n");
         for (int i = 0; i < taskList.getSize(); i++) {
             if (taskList.getTask(i).getDescriptionForFind().contains(keyword)) {
                 numberOfFoundTasks++;
+                int taskIndex = i+1;
                 System.out.println(numberOfFoundTasks + ".[" + taskList.getTask(i).getType() + "]"
                         + "[" + taskList.getTask(i).getStatusIcon() + "] "
-                        + taskList.getTask(i).getDescription());
+                        + taskList.getTask(i).getDescription()
+                        + " [task index: " + taskIndex + "]");
             }
         }
         if (numberOfFoundTasks == 0) {
@@ -201,7 +204,7 @@ public class Messages {
 
                 + "]" + "[" + taskList.getTask(taskNumberToDelete - 1).getStatusIcon() + "] " + taskList.getTask(taskNumberToDelete - 1).getDescription());
         taskList.deleteTask(taskNumberToDelete - 1);
-        System.out.println("Now you have " + taskList.getSize() + " tasks in the list. and deletion happened");
+        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
         Messages.printLine();
     }
 

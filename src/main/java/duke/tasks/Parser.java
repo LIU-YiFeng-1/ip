@@ -26,6 +26,9 @@ public class Parser {
     public static final String COMMAND_HELP = "help";
     public static final String COMMAND_SAVE = "save";
     public static final String SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE = "/";
+    public static final String SPLITTER_FOR_DEADLINE_TASK_DESCRIPTION_AND_DATE = "/by";
+    public static final String SPLITTER_FOR_EVENT_TASK_DESCRIPTION_AND_DATE = "/at";
+
 
     private static boolean isRun = true;
 
@@ -104,23 +107,23 @@ public class Parser {
                 if (taskDescription.trim().equals(EMPTY_INPUT)) {
                     Messages.printEmptyTodoError();
                 } else {
-                    taskList.addTask(new ToDo(taskDescription));
+                    taskList.addTask(new ToDo(taskDescription.trim()));
                     Messages.printTaskAddedMessage(taskList);
                 }
                 break;
             case COMMAND_EVENT:
                 taskDescription = userInput.toLowerCase().trim().replace(COMMAND_EVENT, EMPTY_INPUT);
-                if (taskDescription.contains(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE)) {
+                if (taskDescription.contains(SPLITTER_FOR_EVENT_TASK_DESCRIPTION_AND_DATE)) {
                     int splitterIndex;
                     splitterIndex = taskDescription.indexOf(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
                     String correctedTaskDescription;
                     correctedTaskDescription = taskDescription.substring(0, splitterIndex);
-                    taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
+                    taskDate = taskDescription.substring(splitterIndex + 3, taskDescription.length());
                     if (correctedTaskDescription.trim().equals(EMPTY_INPUT) || taskDate.trim().equals(EMPTY_INPUT)) {
                         Messages.printEmptyEventError();
                     } else {
                         try {
-                            taskList.addTask(new Event(correctedTaskDescription, taskDate));
+                            taskList.addTask(new Event(correctedTaskDescription.trim(), taskDate.trim()));
                             Messages.printTaskAddedMessage(taskList);
                         } catch (StringIndexOutOfBoundsException s) {
                             Messages.printEmptyEventError();
@@ -132,17 +135,17 @@ public class Parser {
                 break;
             case COMMAND_DEADLINE:
                 taskDescription = userInput.toLowerCase().trim().replace(COMMAND_DEADLINE, EMPTY_INPUT);
-                if (taskDescription.contains(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE)) {
+                if (taskDescription.contains(SPLITTER_FOR_DEADLINE_TASK_DESCRIPTION_AND_DATE)) {
                     int splitterIndex;
                     splitterIndex = taskDescription.indexOf(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
                     String correctedTaskDescription;
                     correctedTaskDescription = taskDescription.substring(0, splitterIndex);
-                    taskDate = taskDescription.substring(splitterIndex + 1, taskDescription.length());
+                    taskDate = taskDescription.substring(splitterIndex + 3, taskDescription.length());
                     if (correctedTaskDescription.trim().equals(EMPTY_INPUT) || taskDate.trim().equals(EMPTY_INPUT)) {
                         Messages.printEmptyEventError();
                     } else {
                         try {
-                            taskList.addTask(new Deadline(correctedTaskDescription, taskDate));
+                            taskList.addTask(new Deadline(correctedTaskDescription.trim(), taskDate.trim()));
                             Messages.printTaskAddedMessage(taskList);
                         } catch (StringIndexOutOfBoundsException s) {
                             Messages.printEmptyEventError();
@@ -192,7 +195,7 @@ public class Parser {
                 if (findKeyWord.trim().equals(EMPTY_INPUT)) {
                     Messages.printEmptyFindError();
                 } else {
-                    Messages.printFoundTasks(taskList, findKeyWord);
+                    Messages.printFoundTasks(taskList, findKeyWord.trim());
                 }
                 break;
             case COMMAND_HELP:
@@ -208,20 +211,6 @@ public class Parser {
         } catch (ArrayIndexOutOfBoundsException | IOException a) {
             Messages.printCommandFormatError();
         }
-    }
-
-    /**
-     * Returns the corrected task date from the user input.
-     *
-     * @param input User input for the program.
-     * @return correctedTaskDate Task date which is used for creation of event or deadline task.
-     */
-    public static String getTaskDate(String input) {
-        String[] output;
-        String correctedTaskDate;
-        output = input.trim().split(SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE);
-        correctedTaskDate = output[1].trim();
-        return correctedTaskDate;
     }
 
     /**
