@@ -80,11 +80,11 @@ todo | creates a todo task with the given task description
 `<must have content>` - this is the parameter that you must supply to the program. E.g `todo <task description>`
 
 `[may have content]` -this is the parameter that you may want to supply to the program. E.g `event <task description> /<task date> [task time]`
-#### Bye
+#### __Bye__
 Terminates the program and saves all available tasks into `~/data/duke.txt`
 ##### Syntax
 `bye`
-#### deadline 
+#### __deadline__ 
 Creates a deadline task with the given task description and task date
 ##### Syntax
 `deadline <task description> /<task date> [task time]`
@@ -98,7 +98,7 @@ Creates a deadline task with the given task description and task date
 `deadline project submission /3 Oct` - creates a deadline task called "project submission" that is due on 3 Oct
 
 `deadline project submission /3 Oct 2359` - - creates a deadline task called "project submission" that is due on 3 Oct, 2359
-#### delete 
+#### __delete__ 
 Deletes a specific task from the task list based on the given task index
 ##### Syntax
 `delete <index>`
@@ -106,7 +106,7 @@ Deletes a specific task from the task list based on the given task index
 `<index>` - the corresponding task index which you want to delete
 ##### Example
 `delete 4` - deletes the task with index 4 from your list of tasks
-#### done 
+#### __done__
 Mark a specific task from the task list as done, based on the given task index
 ##### Syntax
 `done <index>`
@@ -114,7 +114,7 @@ Mark a specific task from the task list as done, based on the given task index
 `<index>` - the corresponding task index which you want to mark as done
 ##### Example
 `done 3` - marks the task with index 3 from your list of tasks as done
-#### event 
+#### __event__ 
 Creates an event task with the given task description and task date
 ##### Syntax
 `event <task description> /<task date> [task time]`
@@ -128,23 +128,19 @@ Creates an event task with the given task description and task date
 `event CNY celebration /13 Feb` - creates an event task called "CNY celebration" that is happening on 13 Feb
 
 `event CNY celebration /13 Feb 10pm` - creates an event task called "CNY celebration" that is happening on 13 Feb 10pm
-#### help 
+#### __help__ 
 Prints out the available commands in _Duke_
 ##### Syntax
 `help`
-#### list 
+#### __list__ 
 Prints out all available tasks currently stored in the task list
 ##### Syntax
 `list`
-##### Example
-`list`
-#### save 
+#### __save__ 
 Saves all available tasks into `Duke_output.txt`
 ##### Syntax
 `save`
-##### Example
-`save`
-#### todo 
+#### __todo__ 
 Creates a todo task with the given task description
 ##### Syntax
 `todo <task description>`
