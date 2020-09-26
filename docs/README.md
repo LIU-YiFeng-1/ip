@@ -58,7 +58,7 @@ The following features are available for _Duke_:
 4. Save all available tasks into `Duke_output.txt`.
 5. Extract data from `Duke_output.txt` and update the task list automatically.
 
-##Function List
+## Function List
 The table below shows the available commands in _Duke_ and the corresponding function description.
 
 Function Name | Function Description
@@ -80,13 +80,13 @@ todo | creates a todo task with the given task description
 `<must have content>` - this is the parameter that you must supply to the program. E.g `todo <task description>`
 
 `[may have content]` -this is the parameter that you may want to supply to the program. E.g `event <task description> /<task date> [task time]`
-####Bye
+#### Bye
 Terminates the program and saves all available tasks into `~/data/duke.txt`
-#####Syntax
+##### Syntax
 `bye`
-####deadline 
+#### deadline 
 Creates a deadline task with the given task description and task date
-#####Syntax
+##### Syntax
 `deadline <task description> /<task date> [task time]`
 
 `<task description>` - description of the task that has a deadline. E.g project submission
@@ -94,29 +94,29 @@ Creates a deadline task with the given task description and task date
 `<task date>` - date of the deadline that is due. E.g sunday
 
 `[task time]` - exact time of the deadline that is due. E.g 2359
-#####Example
+##### Example
 `deadline project submission /3 Oct` - creates a deadline task called "project submission" that is due on 3 Oct
 
 `deadline project submission /3 Oct 2359` - - creates a deadline task called "project submission" that is due on 3 Oct, 2359
-####delete 
+#### delete 
 Deletes a specific task from the task list based on the given task index
-#####Syntax
+##### Syntax
 `delete <index>`
 
 `<index>` - the corresponding task index which you want to delete
-#####Example
+##### Example
 `delete 4` - deletes the task with index 4 from your list of tasks
-####done 
+#### done 
 Mark a specific task from the task list as done, based on the given task index
-#####Syntax
+##### Syntax
 `done <index>`
 
 `<index>` - the corresponding task index which you want to mark as done
-#####Example
+##### Example
 `done 3` - marks the task with index 3 from your list of tasks as done
-####event 
+#### event 
 Creates an event task with the given task description and task date
-#####Syntax
+##### Syntax
 `event <task description> /<task date> [task time]`
 
 `<task description>` - description of the task that is happening on certain date. E.g CNY celebration
@@ -124,32 +124,32 @@ Creates an event task with the given task description and task date
 `<task date>` - date of the event that is happening. E.g 13 Feb
 
 `[task time]` - exact time of the event that is happening. E.g 2359
-#####Example
+##### Example
 `event CNY celebration /13 Feb` - creates an event task called "CNY celebration" that is happening on 13 Feb
 
 `event CNY celebration /13 Feb 10pm` - creates an event task called "CNY celebration" that is happening on 13 Feb 10pm
-####help 
+#### help 
 Prints out the available commands in _Duke_
-#####Syntax
+##### Syntax
 `help`
-####list 
+#### list 
 Prints out all available tasks currently stored in the task list
-#####Syntax
+##### Syntax
 `list`
-#####Example
+##### Example
 `list`
-####save 
+#### save 
 Saves all available tasks into `Duke_output.txt`
-#####Syntax
+##### Syntax
 `save`
-#####Example
+##### Example
 `save`
-####todo 
+#### todo 
 Creates a todo task with the given task description
-#####Syntax
+##### Syntax
 `todo <task description>`
 
 `<task description>` - description of the task that needs to do
 
-#####Example
+##### Example
 `todo homework` - creates a todo task called "homework" 
