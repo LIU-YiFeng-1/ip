@@ -59,7 +59,6 @@ The following features are available for _Duke_:
 5. Extract data from `Duke_output.txt` and update the task list automatically.
 
 ##Function List
-
 The table below shows the available commands in _Duke_ and the corresponding function description.
 
 Function Name | Function Description
@@ -85,7 +84,6 @@ todo | creates a todo task with the given task description
 Terminates the program and saves all available tasks into `~/data/duke.txt`
 #####Syntax
 `bye`
-
 ####deadline 
 Creates a deadline task with the given task description and task date
 #####Syntax
@@ -100,7 +98,6 @@ Creates a deadline task with the given task description and task date
 `deadline project submission /3 Oct` - creates a deadline task called "project submission" that is due on 3 Oct
 
 `deadline project submission /3 Oct 2359` - - creates a deadline task called "project submission" that is due on 3 Oct, 2359
-
 ####delete 
 Deletes a specific task from the task list based on the given task index
 #####Syntax
@@ -109,7 +106,6 @@ Deletes a specific task from the task list based on the given task index
 `<index>` - the corresponding task index which you want to delete
 #####Example
 `delete 4` - deletes the task with index 4 from your list of tasks
-     
 ####done 
 Mark a specific task from the task list as done, based on the given task index
 #####Syntax
@@ -118,8 +114,6 @@ Mark a specific task from the task list as done, based on the given task index
 `<index>` - the corresponding task index which you want to mark as done
 #####Example
 `done 3` - marks the task with index 3 from your list of tasks as done
-     
-     
 ####event 
 Creates an event task with the given task description and task date
 #####Syntax
@@ -134,28 +128,22 @@ Creates an event task with the given task description and task date
 `event CNY celebration /13 Feb` - creates an event task called "CNY celebration" that is happening on 13 Feb
 
 `event CNY celebration /13 Feb 10pm` - creates an event task called "CNY celebration" that is happening on 13 Feb 10pm
-
-     
 ####help 
 Prints out the available commands in _Duke_
 #####Syntax
 `help`
-
-     
 ####list 
 Prints out all available tasks currently stored in the task list
 #####Syntax
 `list`
 #####Example
 `list`
-     
 ####save 
 Saves all available tasks into `Duke_output.txt`
 #####Syntax
 `save`
 #####Example
-`save`     
-
+`save`
 ####todo 
 Creates a todo task with the given task description
 #####Syntax
@@ -165,10 +153,3 @@ Creates a todo task with the given task description
 
 #####Example
 `todo homework` - creates a todo task called "homework" 
-
-     
-
-
-Expected outcome:
-
-`outcome`
