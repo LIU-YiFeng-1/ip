@@ -46,5 +46,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    
  ## Running jar file on Command Prompt
  If you are running the jar file on Command Prompt, please use the following command:
+
  chcp 65001
+ 
  java -Dfile.encoding=UTF-8 -jar .\iP.jar
