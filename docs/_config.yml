@@ -1,1 +1,4 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-modernist
+markdown: GFM
+plugins:
+  - jemoji
