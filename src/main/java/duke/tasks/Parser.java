@@ -3,6 +3,8 @@ package duke.tasks;
 import duke.Storage;
 import duke.messages.Messages;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
+
 import static java.util.stream.Collectors.toList;
 
 
@@ -125,8 +127,10 @@ public class Parser {
                         try {
                             taskList.addTask(new Event(correctedTaskDescription.trim(), taskDate.trim()));
                             Messages.printTaskAddedMessage(taskList);
-                        } catch (StringIndexOutOfBoundsException s) {
+                        } catch (StringIndexOutOfBoundsException a) {
                             Messages.printEmptyEventError();
+                        } catch (DateTimeParseException d) {
+                            Messages.printWrongDateFormat();
                         }
                     }
                 } else {
@@ -149,6 +153,8 @@ public class Parser {
                             Messages.printTaskAddedMessage(taskList);
                         } catch (StringIndexOutOfBoundsException s) {
                             Messages.printEmptyEventError();
+                        } catch (DateTimeParseException d) {
+                            Messages.printWrongDateFormat();
                         }
                     }
                 } else {

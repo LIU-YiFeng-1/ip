@@ -34,7 +34,7 @@ public class Storage {
      *
      * @param taskList Task list which stores different types of tasks.
      */
-    public static void loadData(TaskList taskList) {
+    public static void loadData(TaskList taskList) throws IndexOutOfBoundsException {
         String taskDescription;
         String taskDate;
         int taskStatus;
@@ -53,7 +53,7 @@ public class Storage {
                     taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, content.length());
                     taskList.addTask(new ToDo(taskDescription));
                     if (taskStatus == STATUS_DONE_INDEX) {
-                        taskList.markDone(taskList.getSize());
+                        taskList.markDone(taskList.getSize() - 1);
                     }
                 } else if (content.startsWith(EVENT_TASK_TYPE)) {
                     taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
@@ -66,7 +66,7 @@ public class Storage {
 
                     taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
                     if (taskStatus == 1) {
-                        taskList.markDone(taskList.getSize()-1);
+                        taskList.markDone(taskList.getSize() - 1);
                     }
                 } else if (content.startsWith(DEADLINE_TASK_TYPE)) { //pastRecord has a deadline task and add the deadline to the task list
                     taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
@@ -79,7 +79,7 @@ public class Storage {
 
                     taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
                     if (taskStatus == STATUS_DONE_INDEX) {
-                        taskList.markDone(taskList.getSize()-1);
+                        taskList.markDone(taskList.getSize() - 1);
                     }
                 }
                 content = RESET_CONTENT_TO_BE_READ;
