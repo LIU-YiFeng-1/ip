@@ -49,6 +49,15 @@ public class Deadline extends Task {
     }
 
     /**
+     * Enables finding of the key word in the format of MMM DD YYYY.
+     *
+     * @return formatted date for deadline.
+     */
+    public String getFormattedDateForFind() {
+        return formattedDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+    }
+
+    /**
      * Returns the description and date of the deadline.
      *
      * @return deadline description.
@@ -59,13 +68,59 @@ public class Deadline extends Task {
     }
 
     /**
-     * Returns the description of the event.
+     * Returns the description of the deadline.
+     * Based on the user input, the switch statement converts the month object into string for easy finding.
      *
-     * @return event description.
+     * @return deadline description and deadline date.
      */
     @Override
     public String getDescriptionForFind() {
-        return description + formattedDate;
+        String monthInString;
+        String dayInString;
+        String yearInString;
+
+        dayInString = Integer.toString(formattedDate.getDayOfMonth());
+        yearInString = Integer.toString(formattedDate.getYear());
+        switch (formattedDate.getMonthValue()) {
+        case 1:
+            monthInString = "jan";
+            break;
+        case 2:
+            monthInString = "feb";
+            break;
+        case 3:
+            monthInString = "mar";
+            break;
+        case 4:
+            monthInString = "apr";
+            break;
+        case 5:
+            monthInString = "may";
+            break;
+        case 6:
+            monthInString = "jun";
+            break;
+        case 7:
+            monthInString = "jul";
+            break;
+        case 8:
+            monthInString = "aug";
+            break;
+        case 9:
+            monthInString = "sep";
+            break;
+        case 10:
+            monthInString = "oct";
+            break;
+        case 11:
+            monthInString = "nov";
+            break;
+        default:
+            monthInString = "dec";
+            break;
+        }
+
+        return description + monthInString + dayInString + yearInString;
     }
 
     /**

@@ -142,7 +142,7 @@ public class Messages {
                 "To perform done or delete command, refer to the task index number\n");
 
         if (numberOfFoundTasks == 0) {
-            System.out.println(SAD_FACE_EMOJI + "There is no matching task with" + keyword);
+            System.out.println(SAD_FACE_EMOJI + "There is no matching task with " + keyword);
         }
         printLine();
     }

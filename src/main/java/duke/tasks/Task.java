@@ -88,7 +88,7 @@ public class Task {
      * Returns the description of the task only.
      * Overridden in ToDo, Event and Deadline classes.
      *
-     * @return deadline description.
+     * @return task description.
      */
     public String getTaskDescription() {
         return null;
@@ -99,9 +99,20 @@ public class Task {
      * Format of return is MMM DD YYYY.
      * Overridden in ToDo, Event and Deadline classes.
      *
-     * @return deadline date.
+     * @return formatted date.
      */
     public String getFormattedDate() {
+        return null;
+    }
+
+    /**
+     * Returns the formatted date in a different format from the input.
+     * Enable finding of the key word in the format of MMM DD YYYY.
+     * Overridden in ToDo, Event and Deadline classes.
+     *
+     * @return formatted date.
+     */
+    public String getFormattedDateForFind() {
         return null;
     }
 }

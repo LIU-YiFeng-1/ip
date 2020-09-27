@@ -30,7 +30,7 @@ public class ToDo extends Task {
     /**
      * Returns the description of the todo only.
      *
-     * @return deadline description.
+     * @return todo description.
      */
     public String getTaskDescription() {
         return description;
@@ -42,6 +42,15 @@ public class ToDo extends Task {
      * @return empty content.
      */
     public String getFormattedDate() {
+        return "";
+    }
+
+    /**
+     * Returns an empty content as todo has no date.
+     *
+     * @return empty content.
+     */
+    public String getFormattedDateForFind() {
         return "";
     }
 }

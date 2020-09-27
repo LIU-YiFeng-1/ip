@@ -39,7 +39,7 @@ public class Event extends Task {
     /**
      * Returns the description of the event only.
      *
-     * @return deadline description.
+     * @return event description.
      */
     @Override
     public String getTaskDescription() {
@@ -50,7 +50,7 @@ public class Event extends Task {
      * Returns a formatted date in a different format from the input.
      * Format of return is MMM DD YYYY.
      *
-     * @return deadline date.
+     * @return event date.
      */
     @Override
     public String getFormattedDate() {
@@ -60,13 +60,68 @@ public class Event extends Task {
     }
 
     /**
+     * Enables finding of the key word in the format of MMM DD YYYY.
+     *
+     * @return formatted date for event.
+     */
+    public String getFormattedDateForFind() {
+        return formattedDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+    }
+
+    /**
      * Returns the description of the event.
+     * Based on the user input, the switch statement converts the month object into string for easy finding.
      *
      * @return event description.
      */
     @Override
     public String getDescriptionForFind() {
-        return description + formattedDate ;
+        String monthInString;
+        String dayInString;
+        String yearInString;
+
+        dayInString = Integer.toString(formattedDate.getDayOfMonth());
+        yearInString = Integer.toString(formattedDate.getYear());
+        switch (formattedDate.getMonthValue()) {
+        case 1:
+            monthInString = "jan";
+            break;
+        case 2:
+            monthInString = "feb";
+            break;
+        case 3:
+            monthInString = "mar";
+            break;
+        case 4:
+            monthInString = "apr";
+            break;
+        case 5:
+            monthInString = "may";
+            break;
+        case 6:
+            monthInString = "jun";
+            break;
+        case 7:
+            monthInString = "jul";
+            break;
+        case 8:
+            monthInString = "aug";
+            break;
+        case 9:
+            monthInString = "sep";
+            break;
+        case 10:
+            monthInString = "oct";
+            break;
+        case 11:
+            monthInString = "nov";
+            break;
+        default:
+            monthInString = "dec";
+            break;
+        }
+
+        return description + monthInString + dayInString + yearInString;
     }
 
     /**
