@@ -102,7 +102,7 @@ public class Storage {
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         if (taskList.getSize() == 0) {
             bufferedWriter.close();
-            System.out.println("file close without saving as there is nothing to save!");
+            Messages.printNoDataToSaveMessage();
         } else {
             for (int i = 0; i < taskList.getSize(); i++) {
                 if (taskList.getTask(i).getStatusIcon().equals(STATUS_DONE_SYMBOL)) {

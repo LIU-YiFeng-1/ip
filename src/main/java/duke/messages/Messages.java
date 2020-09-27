@@ -194,7 +194,7 @@ public class Messages {
                 + "[" + taskList.getTask(taskList.getSize()-1).getStatusIcon() + "] "
                 + taskList.getTask(taskList.getSize()-1).getTaskDescription()
                 + taskList.getTask(taskList.getSize()-1).getFormattedDate());
-        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
+        System.out.println("Number of available tasks stored in the list: " + taskList.getSize());
         Messages.printLine();
     }
 
@@ -211,7 +211,7 @@ public class Messages {
                 + taskList.getTask(taskNumberToDelete - 1).getTaskDescription()
                 + taskList.getTask(taskNumberToDelete - 1).getFormattedDate());
         taskList.deleteTask(taskNumberToDelete - 1);
-        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
+        System.out.println("Number of available tasks stored in the list: " + taskList.getSize());
         Messages.printLine();
     }
 
@@ -269,6 +269,12 @@ public class Messages {
     /** Prints an error message when user input is not following the correct date format. */
     public static void printWrongDateFormat() {
         System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong date format. Please type HELP to see command examples");
+        printLine();
+    }
+
+    /** Prints a message to indicate the writing of data is done and file closed without saving. */
+    public static void printNoDataToSaveMessage() {
+        System.out.println("file closed without saving as there is nothing to save!");
         printLine();
     }
 }
