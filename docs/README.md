@@ -49,7 +49,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 
  chcp 65001
  
- java -Dfile.encoding=UTF-8 -jar <File Directory>\iP.jar
+ java -Dfile.encoding=UTF-8 -jar [File Directory]\iP.jar
  
 ## Features for _Duke_
 The following features are available for _Duke_:
