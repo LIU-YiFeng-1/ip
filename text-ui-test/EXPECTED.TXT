@@ -34,59 +34,48 @@ The list is empty
 -----------------------------------------------------------------------------
 Got it. I've added this task:
   [T][✘] reading
-Now you have 1 tasks in the list.
+Number of available tasks stored in the list: 1
 -----------------------------------------------------------------------------
 Got it. I've added this task:
   [T][✘] watching drama
-Now you have 2 tasks in the list.
+Number of available tasks stored in the list: 2
 -----------------------------------------------------------------------------
-Got it. I've added this task:
-  [E][✘] win toto(tmr)
-Now you have 3 tasks in the list.
+☹ OOPS!!! Wrong input format. Please type HELP to see command examples
 -----------------------------------------------------------------------------
-Got it. I've added this task:
-  [D][✘] win toto(tmr)
-Now you have 4 tasks in the list.
+☹ OOPS!!! Wrong input format. Please type HELP to see command examples
 -----------------------------------------------------------------------------
 1.[T][✘] reading
 2.[T][✘] watching drama
-3.[E][✘] win toto(tmr)
-4.[D][✘] win toto(tmr)
 -----------------------------------------------------------------------------
 Nice! I've marked this task as done:
   [T][✓] reading
 -----------------------------------------------------------------------------
 Got it. I've removed this task:
   [T][✘] watching drama
-Now you have 3 tasks in the list. and deletion happened
+Number of available tasks stored in the list: 1
 -----------------------------------------------------------------------------
 1.[T][✓] reading
-2.[E][✘] win toto(tmr)
-3.[D][✘] win toto(tmr)
 -----------------------------------------------------------------------------
 Got it. I've added this task:
   [T][✘] againah?
-Now you have 4 tasks in the list.
+Number of available tasks stored in the list: 2
 -----------------------------------------------------------------------------
 Got it. I've removed this task:
   [T][✓] reading
-Now you have 3 tasks in the list. and deletion happened
------------------------------------------------------------------------------
-Got it. I've removed this task:
-  [E][✘] win toto(tmr)
-Now you have 2 tasks in the list. and deletion happened
------------------------------------------------------------------------------
-Got it. I've removed this task:
-  [D][✘] win toto(tmr)
-Now you have 1 tasks in the list. and deletion happened
+Number of available tasks stored in the list: 1
 -----------------------------------------------------------------------------
 Got it. I've removed this task:
   [T][✘] againah?
-Now you have 0 tasks in the list. and deletion happened
+Number of available tasks stored in the list: 0
 -----------------------------------------------------------------------------
 The list is empty
 -----------------------------------------------------------------------------
-file close without saving as there is nothing to save!
+The list is empty
+-----------------------------------------------------------------------------
+The list is empty
+-----------------------------------------------------------------------------
+file closed without saving as there is nothing to save!
+-----------------------------------------------------------------------------
 Bye. Hope to see you again soon!
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
