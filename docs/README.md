@@ -44,7 +44,8 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    -----------------------------------------------------------------------------
    
  ## Running jar file on Command Prompt
- If you are running the jar file on Windows Command Prompt, please use the following command:
+ If you are running the jar file on Windows Command Prompt, go to "Property" >> "Font" >> change font to "NSimSun".
+ Then use the following command to run the JAR file:
 
  chcp 65001
  
