@@ -93,7 +93,7 @@ Creates a deadline task with the given task description and task date
 `<task date>` - date of the deadline that is due in the format of YYYY-MM-DD. E.g 2020-10-10
 
 ##### Example
-`deadline project submission /by 2020-10-03` - creates a deadline task called "project submission" that is due on 3 Oct 2020
+`deadline project submission /by 2020-10-03` - creates a deadline task called "project submission" that is due on Oct 3 2020 (re-formatted date by Duke).
 
 #### __delete__ 
 Deletes a specific task from the task list based on the given task index
@@ -121,7 +121,7 @@ Creates an event task with the given task description and task date
 `<task date>` - date of the event that is happening in the format of YYYY-MM-DD. E.g 2020-02-13
 
 ##### Example
-`event CNY celebration /at 2020-02-13` - creates an event task called "CNY celebration" that is happening on 13 Feb 2020
+`event CNY celebration /at 2020-02-13` - creates an event task called "CNY celebration" that is happening on Feb 13 2020 (re-formatted date by Duke).
 
 #### __help__ 
 Prints out the available commands in _Duke_
