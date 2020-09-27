@@ -65,7 +65,7 @@ public class Deadline extends Task {
      */
     @Override
     public String getDescriptionForFind() {
-        return description + date ;
+        return description + formattedDate;
     }
 
     /**

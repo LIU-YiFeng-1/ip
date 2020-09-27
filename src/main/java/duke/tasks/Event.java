@@ -66,7 +66,7 @@ public class Event extends Task {
      */
     @Override
     public String getDescriptionForFind() {
-        return description + date ;
+        return description + formattedDate ;
     }
 
     /**
