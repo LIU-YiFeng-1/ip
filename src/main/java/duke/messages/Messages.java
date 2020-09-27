@@ -75,8 +75,8 @@ public class Messages {
                 + "2. done (e.g done 1)\n"
                 + "3. delete (e.g delete 1)\n"
                 + "4. todo (e.g todo homework)\n"
-                + "5. event (e.g event meeting /at monday 2pm)\n"
-                + "6. deadline (e.g deadline project /by monday 2359)\n"
+                + "5. event (e.g event meeting /at YYYY-MM-DD)\n"
+                + "6. deadline (e.g deadline project /by YYYY-MM-DD)\n"
                 + "7. find (e.g find monday)\n"
                 + "8. save\n"
                 + "9. bye\n"
@@ -97,7 +97,8 @@ public class Messages {
                 + "]"
                 + "["
                 + task.getStatusIcon()
-                + "] " + task.getDescription());
+                + "] " + task.getTaskDescription()
+                + task.getFormattedDate());
         printLine();
     }
 
@@ -110,7 +111,8 @@ public class Messages {
         for (int i = 0; i < taskList.getSize(); i++) {
             System.out.println(i + 1 + ".[" + taskList.getTask(i).getType() + "]"
                     + "[" + taskList.getTask(i).getStatusIcon() + "] "
-                    + taskList.getTask(i).getDescription());
+                    + taskList.getTask(i).getTaskDescription()
+                    + taskList.getTask(i).getFormattedDate());
         }
         printLine();
     }
@@ -125,17 +127,20 @@ public class Messages {
     public static void printFoundTasks(TaskList taskList, String keyword) {
         int numberOfFoundTasks = 0;
         System.out.println("Searching for matching tasks in your list:\n");
-        System.out.println("To perform done or delete command, refer to the task index number\n");
         for (int i = 0; i < taskList.getSize(); i++) {
             if (taskList.getTask(i).getDescriptionForFind().contains(keyword)) {
                 numberOfFoundTasks++;
                 int taskIndex = i+1;
                 System.out.println(numberOfFoundTasks + ".[" + taskList.getTask(i).getType() + "]"
                         + "[" + taskList.getTask(i).getStatusIcon() + "] "
-                        + taskList.getTask(i).getDescription()
+                        + taskList.getTask(i).getTaskDescription()
+                        + taskList.getTask(i).getFormattedDate()
                         + " [task index: " + taskIndex + "]");
             }
         }
+        System.out.println(System.lineSeparator() +
+                "To perform done or delete command, refer to the task index number\n");
+
         if (numberOfFoundTasks == 0) {
             System.out.println(SAD_FACE_EMOJI + "There is no matching task with" + keyword);
         }
@@ -187,8 +192,9 @@ public class Messages {
         System.out.println("Got it. I've added this task:");
         System.out.println("  [" + taskList.getTask(taskList.getSize()-1).getType() + "]"
                 + "[" + taskList.getTask(taskList.getSize()-1).getStatusIcon() + "] "
-                + taskList.getTask(taskList.getSize()-1).getDescription());
-        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
+                + taskList.getTask(taskList.getSize()-1).getTaskDescription()
+                + taskList.getTask(taskList.getSize()-1).getFormattedDate());
+        System.out.println("Number of available tasks stored in the list: " + taskList.getSize());
         Messages.printLine();
     }
 
@@ -200,11 +206,12 @@ public class Messages {
      */
     public static void printTaskDeletedMessage(TaskList taskList, int taskNumberToDelete) {
         System.out.println("Got it. I've removed this task:");
-        System.out.println("  [" + taskList.getTask(taskNumberToDelete - 1).getType()
-
-                + "]" + "[" + taskList.getTask(taskNumberToDelete - 1).getStatusIcon() + "] " + taskList.getTask(taskNumberToDelete - 1).getDescription());
+        System.out.println("  [" + taskList.getTask(taskNumberToDelete - 1).getType() + "]"
+                + "[" + taskList.getTask(taskNumberToDelete - 1).getStatusIcon() + "] "
+                + taskList.getTask(taskNumberToDelete - 1).getTaskDescription()
+                + taskList.getTask(taskNumberToDelete - 1).getFormattedDate());
         taskList.deleteTask(taskNumberToDelete - 1);
-        System.out.println("Now you have " + taskList.getSize() + " tasks in the list.");
+        System.out.println("Number of available tasks stored in the list: " + taskList.getSize());
         Messages.printLine();
     }
 
@@ -224,8 +231,8 @@ public class Messages {
      * 2. done (e.g done 1)
      * 3. delete (e.g delete 1)
      * 4. todo (e.g todo homework)
-     * 5. event (e.g event meeting /monday 2pm)
-     * 6. deadline (e.g deadline project /monday 2359)
+     * 5. event (e.g event meeting /at YYYY-MM-DD)
+     * 6. deadline (e.g deadline project /by YYYY-MM-DD)
      * 7. find (e.g find monday)
      * 8. save
      * 9. bye
@@ -249,12 +256,25 @@ public class Messages {
 
     /** Prints an error message when user input is not following the correct command format. */
     public static void printCommandFormatError() {
-        System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong input format. Please type help to see command examples");
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong input format. Please type HELP to see command examples");
         printLine();
     }
+
     /** Prints a message when Duke_output.txt has no content. */
     public static void printNoPastRecordMessage() {
         System.out.println("There is no past record! You are a 1st time user");
         Messages.printLine();
+    }
+
+    /** Prints an error message when user input is not following the correct date format. */
+    public static void printWrongDateFormat() {
+        System.out.println(SAD_FACE_EMOJI + "OOPS!!! Wrong date format. Please type HELP to see command examples");
+        printLine();
+    }
+
+    /** Prints a message to indicate the writing of data is done and file closed without saving. */
+    public static void printNoDataToSaveMessage() {
+        System.out.println("file closed without saving as there is nothing to save!");
+        printLine();
     }
 }

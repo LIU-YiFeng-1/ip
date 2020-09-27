@@ -1,5 +1,7 @@
 package duke.tasks;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Task class represents a task which consists of a task description
  * and a task status isDone.
@@ -79,6 +81,27 @@ public class Task {
      * @return null
      */
     public String saveData() {
+        return null;
+    }
+
+    /**
+     * Returns the description of the task only.
+     * Overridden in ToDo, Event and Deadline classes.
+     *
+     * @return deadline description.
+     */
+    public String getTaskDescription() {
+        return null;
+    }
+
+    /**
+     * Returns a formatted date in a different format from the input.
+     * Format of return is MMM DD YYYY.
+     * Overridden in ToDo, Event and Deadline classes.
+     *
+     * @return deadline date.
+     */
+    public String getFormattedDate() {
         return null;
     }
 }

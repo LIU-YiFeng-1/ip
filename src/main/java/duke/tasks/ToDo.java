@@ -26,4 +26,22 @@ public class ToDo extends Task {
     public String saveData() {
         return "T | " + (isDone? "1" : "0") + " | " + description;
     }
+
+    /**
+     * Returns the description of the todo only.
+     *
+     * @return deadline description.
+     */
+    public String getTaskDescription() {
+        return description;
+    }
+
+    /**
+     * Returns an empty content as todo has no date.
+     *
+     * @return empty content.
+     */
+    public String getFormattedDate() {
+        return "";
+    }
 }
