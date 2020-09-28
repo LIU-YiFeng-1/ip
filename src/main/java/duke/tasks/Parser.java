@@ -146,13 +146,13 @@ public class Parser {
                     correctedTaskDescription = taskDescription.substring(0, splitterIndex);
                     taskDate = taskDescription.substring(splitterIndex + 3, taskDescription.length());
                     if (correctedTaskDescription.trim().equals(EMPTY_INPUT) || taskDate.trim().equals(EMPTY_INPUT)) {
-                        Messages.printEmptyEventError();
+                        Messages.printEmptyDeadlineError();
                     } else {
                         try {
                             taskList.addTask(new Deadline(correctedTaskDescription.trim(), taskDate.trim()));
                             Messages.printTaskAddedMessage(taskList);
                         } catch (StringIndexOutOfBoundsException s) {
-                            Messages.printEmptyEventError();
+                            Messages.printEmptyDeadlineError();
                         } catch (DateTimeParseException d) {
                             Messages.printWrongDateFormat();
                         }

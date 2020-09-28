@@ -1,3 +1,0 @@
-D | 0 | doing something(2020-10-02)
-E | 0 | doing something(2020-10-14)
-D | 0 | doing something again(2020-11-02)
