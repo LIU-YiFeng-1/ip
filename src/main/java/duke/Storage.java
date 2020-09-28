@@ -33,6 +33,7 @@ public class Storage {
      * Loads data from Duke_output.txt for past record tasks.
      *
      * @param taskList Task list which stores different types of tasks.
+     * @throws IndexOutOfBoundsException if the current task index  > taskList.getSize()
      */
     public static void loadData(TaskList taskList) throws IndexOutOfBoundsException {
         String taskDescription;
