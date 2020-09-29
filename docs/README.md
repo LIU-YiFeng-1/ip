@@ -51,6 +51,8 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
  
  java -Dfile.encoding=UTF-8 -jar [File Directory]\iP.jar
  
+ P.S Always remember to change the working directory to the directory where the JAR file is being saved.
+ 
 ## Features for _Duke_
 The following features are available for _Duke_:
 1. Keep track of todo, event and deadline types of tasks.
