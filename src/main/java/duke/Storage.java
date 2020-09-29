@@ -12,16 +12,17 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static duke.Duke.RECORD_PATH;
-
 /**
  * Storage class which deals with data loading and data saving.
  */
 public class Storage {
+
+    public static final String RECORD_PATH = "Duke_output.txt";
+
     private static final int TASK_STATUS_STARTING_INDEX = 4;
     private static final int TASK_STATUS_ENDING_INDEX = 5;
     private static final int TASK_DESCRIPTION_STARTING_INDEX = 8;
-    private static final int STATUS_DONE_INDEX = 1;
+    private static final int STATUS_DONE_INDICATOR = 1;
     public static final String STATUS_DONE_SYMBOL = "\u2713";
     public static final String TODO_TASK_TYPE = "T";
     public static final String EVENT_TASK_TYPE = "E";
@@ -48,12 +49,12 @@ public class Storage {
             Scanner scanner = new Scanner(pastRecord);
             while (scanner.hasNextLine()) {
                 String content = scanner.nextLine();
-                taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
 
                 if (content.startsWith(TODO_TASK_TYPE)) {
                     taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, content.length());
                     taskList.addTask(new ToDo(taskDescription));
-                    if (taskStatus == STATUS_DONE_INDEX) {
+                    taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
+                    if (taskStatus == STATUS_DONE_INDICATOR) {
                         taskList.markDone(taskList.getSize() - 1);
                     }
                 } else if (content.startsWith(EVENT_TASK_TYPE)) {
@@ -66,10 +67,10 @@ public class Storage {
                     taskList.addTask(new Event(taskDescription, taskDate));
 
                     taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
-                    if (taskStatus == 1) {
+                    if (taskStatus == STATUS_DONE_INDICATOR) {
                         taskList.markDone(taskList.getSize() - 1);
                     }
-                } else if (content.startsWith(DEADLINE_TASK_TYPE)) { //pastRecord has a deadline task and add the deadline to the task list
+                } else if (content.startsWith(DEADLINE_TASK_TYPE)) {
                     taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
                     taskDateStartIndex = taskDescriptionEndIndex + 1;
                     taskDateEndIndex = content.length() - 1;
@@ -79,9 +80,11 @@ public class Storage {
                     taskList.addTask(new Deadline(taskDescription, taskDate));
 
                     taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
-                    if (taskStatus == STATUS_DONE_INDEX) {
+                    if (taskStatus == STATUS_DONE_INDICATOR) {
                         taskList.markDone(taskList.getSize() - 1);
                     }
+                } else {
+                    content = RESET_CONTENT_TO_BE_READ;
                 }
                 content = RESET_CONTENT_TO_BE_READ;
             }

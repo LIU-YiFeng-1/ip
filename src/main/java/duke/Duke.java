@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 public class Duke {
 
-    public static final String RECORD_PATH = "Duke_output.txt";
-
     public static void main(String[] args) throws IOException {
         TaskList taskList = new TaskList();
 
