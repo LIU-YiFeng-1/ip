@@ -16,6 +16,7 @@ public class Event extends Task {
      * constructor for Event class.
      * Creates an Event task with the given task description and given task date,
      * and sets the task status to default: false / not done.
+     * The task date is also converted to LocalDate format.
      *
      * @param description Description of the event being created.
      * @param date Date of the event.
@@ -48,7 +49,7 @@ public class Event extends Task {
 
     /**
      * Returns a formatted date in a different format from the input.
-     * Format of return is MMM DD YYYY.
+     * Format of return is MMM D YYYY.
      *
      * @return event date.
      */
@@ -60,7 +61,7 @@ public class Event extends Task {
     }
 
     /**
-     * Enables finding of the key word in the format of MMM DD YYYY.
+     * Enables finding of the key word in the format of MMM D YYYY.
      *
      * @return formatted date for event.
      */

@@ -199,7 +199,7 @@ public class Messages {
     }
 
     /**
-     * Prints a message to indicate a task is added successfully.
+     * Prints a message to indicate a task is deleted successfully.
      *
      * @param taskList TaskList which contains all stored tasks.
      * @param taskNumberToDelete Index of task to be deleted.
