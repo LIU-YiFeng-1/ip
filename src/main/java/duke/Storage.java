@@ -25,7 +25,6 @@ public class Storage {
     public static final String EVENT_TASK_TYPE = "E";
     public static final String RECORD_PATH = "Duke_output.txt";
     public static final String RESET_CONTENT_TO_BE_READ = "";
-    public static final String STATUS_DONE_SYMBOL = "\u2713";
     public static final String TASK_DESCRIPTION_END_INDICATOR = "(";
     public static final String TODO_TASK_TYPE = "T";
 
@@ -36,13 +35,6 @@ public class Storage {
      * @throws IndexOutOfBoundsException if the current task index  > taskList.getSize()
      */
     public static void loadData(TaskList taskList) throws IndexOutOfBoundsException {
-        String taskDescription;
-        String taskDate;
-        int taskStatus;
-        int taskDescriptionEndIndex;
-        int taskDateStartIndex;
-        int taskDateEndIndex;
-
         File pastRecord = new File(RECORD_PATH);
         try {
             readingFiles(taskList, pastRecord);
@@ -51,21 +43,27 @@ public class Storage {
         }
     }
 
+    /**
+     * Reads data from Duke_output.txt for past record tasks.
+     *
+     * @param taskList   Task list which stores different types of tasks.
+     * @param pastRecord File name to be read.
+     * @throws FileNotFoundException If file is not present, continue.
+     */
     private static void readingFiles(TaskList taskList, File pastRecord) throws FileNotFoundException {
-        int taskDateStartIndex;
-        String taskDate;
-        int taskStatus;
-        String taskDescription;
-        int taskDescriptionEndIndex;
-        int taskDateEndIndex;
         Scanner scanner = new Scanner(pastRecord);
         while (scanner.hasNextLine()) {
             String content = scanner.nextLine();
             checkingTaskType(taskList, content);
-            content = RESET_CONTENT_TO_BE_READ;
         }
     }
 
+    /**
+     * Reads data from Duke_output.txt and creating tasks accordingly.
+     *
+     * @param taskList   Task list which stores different types of tasks.
+     * @param content    Content of next line to be read.
+     */
     private static void checkingTaskType(TaskList taskList, String content) {
         int taskStatus;
         int taskDateStartIndex;
