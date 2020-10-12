@@ -45,50 +45,69 @@ public class Storage {
 
         File pastRecord = new File(RECORD_PATH);
         try {
-            Scanner scanner = new Scanner(pastRecord);
-            while (scanner.hasNextLine()) {
-                String content = scanner.nextLine();
-
-                if (content.startsWith(TODO_TASK_TYPE)) {
-                    taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, content.length());
-                    taskList.addTask(new ToDo(taskDescription));
-                    taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
-                    if (taskStatus == STATUS_DONE_INDICATOR) {
-                        taskList.markDone(taskList.getSize() - 1);
-                    }
-                } else if (content.startsWith(EVENT_TASK_TYPE)) {
-                    taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
-                    taskDateStartIndex = taskDescriptionEndIndex + 1;
-                    taskDateEndIndex = content.length() - 1;
-
-                    taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, taskDescriptionEndIndex);
-                    taskDate = content.substring(taskDateStartIndex, taskDateEndIndex);
-                    taskList.addTask(new Event(taskDescription, taskDate));
-
-                    taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
-                    if (taskStatus == STATUS_DONE_INDICATOR) {
-                        taskList.markDone(taskList.getSize() - 1);
-                    }
-                } else if (content.startsWith(DEADLINE_TASK_TYPE)) {
-                    taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
-                    taskDateStartIndex = taskDescriptionEndIndex + 1;
-                    taskDateEndIndex = content.length() - 1;
-
-                    taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, taskDescriptionEndIndex);
-                    taskDate = content.substring(taskDateStartIndex, taskDateEndIndex);
-                    taskList.addTask(new Deadline(taskDescription, taskDate));
-
-                    taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
-                    if (taskStatus == STATUS_DONE_INDICATOR) {
-                        taskList.markDone(taskList.getSize() - 1);
-                    }
-                } else {
-                    content = RESET_CONTENT_TO_BE_READ;
-                }
-                content = RESET_CONTENT_TO_BE_READ;
-            }
+            readingFiles(taskList, pastRecord);
         } catch (FileNotFoundException e) {
             Messages.printNoPastRecordMessage();
+        }
+    }
+
+    private static void readingFiles(TaskList taskList, File pastRecord) throws FileNotFoundException {
+        int taskDateStartIndex;
+        String taskDate;
+        int taskStatus;
+        String taskDescription;
+        int taskDescriptionEndIndex;
+        int taskDateEndIndex;
+        Scanner scanner = new Scanner(pastRecord);
+        while (scanner.hasNextLine()) {
+            String content = scanner.nextLine();
+            checkingTaskType(taskList, content);
+            content = RESET_CONTENT_TO_BE_READ;
+        }
+    }
+
+    private static void checkingTaskType(TaskList taskList, String content) {
+        int taskStatus;
+        int taskDateStartIndex;
+        String taskDescription;
+        int taskDescriptionEndIndex;
+        int taskDateEndIndex;
+        String taskDate;
+        if (content.startsWith(TODO_TASK_TYPE)) {
+            taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, content.length());
+            taskList.addTask(new ToDo(taskDescription));
+            taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
+            if (taskStatus == STATUS_DONE_INDICATOR) {
+                taskList.markDone(taskList.getSize() - 1);
+            }
+        } else if (content.startsWith(EVENT_TASK_TYPE)) {
+            taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
+            taskDateStartIndex = taskDescriptionEndIndex + 1;
+            taskDateEndIndex = content.length() - 1;
+
+            taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, taskDescriptionEndIndex);
+            taskDate = content.substring(taskDateStartIndex, taskDateEndIndex);
+            taskList.addTask(new Event(taskDescription, taskDate));
+
+            taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
+            if (taskStatus == STATUS_DONE_INDICATOR) {
+                taskList.markDone(taskList.getSize() - 1);
+            }
+        } else if (content.startsWith(DEADLINE_TASK_TYPE)) {
+            taskDescriptionEndIndex = getTaskDescriptionEndIndex(content);
+            taskDateStartIndex = taskDescriptionEndIndex + 1;
+            taskDateEndIndex = content.length() - 1;
+
+            taskDescription = content.substring(TASK_DESCRIPTION_STARTING_INDEX, taskDescriptionEndIndex);
+            taskDate = content.substring(taskDateStartIndex, taskDateEndIndex);
+            taskList.addTask(new Deadline(taskDescription, taskDate));
+
+            taskStatus = Integer.parseInt(content.substring(TASK_STATUS_STARTING_INDEX, TASK_STATUS_ENDING_INDEX));
+            if (taskStatus == STATUS_DONE_INDICATOR) {
+                taskList.markDone(taskList.getSize() - 1);
+            }
+        } else {
+            content = RESET_CONTENT_TO_BE_READ;
         }
     }
 
