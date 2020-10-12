@@ -167,13 +167,13 @@ public class Messages {
 
     /** Prints an error message when user did not input task number to be deleted. */
     public static void printEmptyDeleteError() {
-        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be deleted cannot be empty.");
+        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be deleted has to be valid.");
         Messages.printLine();
     }
 
     /** Prints an error message when user did not input task number to be marked as done. */
     public static void printEmptyDoneError() {
-        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be done cannot be empty.");
+        System.out.println(SAD_FACE_EMOJI  + "OOPS!!! The task number to be done has to be valid.");
         Messages.printLine();
     }
 
