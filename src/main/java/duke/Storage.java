@@ -17,18 +17,17 @@ import java.util.Scanner;
  */
 public class Storage {
 
-    public static final String RECORD_PATH = "Duke_output.txt";
-
-    private static final int TASK_STATUS_STARTING_INDEX = 4;
-    private static final int TASK_STATUS_ENDING_INDEX = 5;
-    private static final int TASK_DESCRIPTION_STARTING_INDEX = 8;
     private static final int STATUS_DONE_INDICATOR = 1;
-    public static final String STATUS_DONE_SYMBOL = "\u2713";
-    public static final String TODO_TASK_TYPE = "T";
-    public static final String EVENT_TASK_TYPE = "E";
+    private static final int TASK_DESCRIPTION_STARTING_INDEX = 8;
+    private static final int TASK_STATUS_ENDING_INDEX = 5;
+    private static final int TASK_STATUS_STARTING_INDEX = 4;
     public static final String DEADLINE_TASK_TYPE = "D";
+    public static final String EVENT_TASK_TYPE = "E";
+    public static final String RECORD_PATH = "Duke_output.txt";
     public static final String RESET_CONTENT_TO_BE_READ = "";
+    public static final String STATUS_DONE_SYMBOL = "\u2713";
     public static final String TASK_DESCRIPTION_END_INDICATOR = "(";
+    public static final String TODO_TASK_TYPE = "T";
 
     /**
      * Loads data from Duke_output.txt for past record tasks.

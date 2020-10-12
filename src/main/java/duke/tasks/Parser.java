@@ -5,32 +5,30 @@ import duke.messages.Messages;
 import java.io.IOException;
 import java.time.format.DateTimeParseException;
 
-import static java.util.stream.Collectors.toList;
-
 
 /**
  * Parser class which helps to decode and execute the user command.
  */
 public class Parser {
+
     public static final int EMPTY_LIST_SIZE = 0;
-    public static final int LENGTH_FOR_LIST_COMMAND = 4;
     public static final int LENGTH_FOR_BYE_COMMAND = 3;
-    public static final String EMPTY_INPUT = "";
-    public static final String EMPTY_SPACE = " ";
-    public static final String COMMAND_LIST = "list";
+    public static final int LENGTH_FOR_LIST_COMMAND = 4;
     public static final String COMMAND_BYE = "bye";
-    public static final String COMMAND_TODO = "todo";
-    public static final String COMMAND_EVENT = "event";
     public static final String COMMAND_DEADLINE = "deadline";
     public static final String COMMAND_DELETE = "delete";
     public static final String COMMAND_DONE = "done";
+    public static final String COMMAND_EVENT = "event";
     public static final String COMMAND_FIND = "find";
     public static final String COMMAND_HELP = "help";
+    public static final String COMMAND_LIST = "list";
     public static final String COMMAND_SAVE = "save";
-    public static final String SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE = "/";
+    public static final String COMMAND_TODO = "todo";
+    public static final String EMPTY_INPUT = "";
+    public static final String EMPTY_SPACE = " ";
     public static final String SPLITTER_FOR_DEADLINE_TASK_DESCRIPTION_AND_DATE = "/by";
     public static final String SPLITTER_FOR_EVENT_TASK_DESCRIPTION_AND_DATE = "/at";
-
+    public static final String SPLITTER_FOR_TASK_DESCRIPTION_AND_DATE = "/";
 
     private static boolean isRun = true;
 
@@ -167,7 +165,7 @@ public class Parser {
                         Messages.printEmptyListMessage();
                     } else {
                         taskIndex = getTaskIndex(convertedUserInput[1]);
-                        if (taskIndex > taskList.getSize()) {
+                        if (taskIndex > taskList.getSize() || taskIndex <= 0) {
                             Messages.printIndexOutOfBoundMessage();
                         } else {
                             Messages.printTaskDeletedMessage(taskList, taskIndex);
@@ -183,7 +181,7 @@ public class Parser {
                         Messages.printEmptyListMessage();
                     } else {
                         taskIndex = getTaskIndex(convertedUserInput[1]);
-                        if (taskIndex > taskList.getSize()) {
+                        if (taskIndex > taskList.getSize() || taskIndex <= 0) {
                             Messages.printIndexOutOfBoundMessage();
                         } else if (taskList.getTask(taskIndex - 1).isDone) {
                             Messages.printTaskAlreadyDoneMessage();
@@ -228,7 +226,7 @@ public class Parser {
     public static int getTaskIndex(String input) {
         String convertedInput;
         int index;
-        convertedInput = input.replaceAll("[^0-9]", "");//replace all non-number with space
+        convertedInput = input.replaceAll("[^0-9,-]", "");//replace all non-number with space
         index = Integer.parseInt(convertedInput);
         return index;
     }

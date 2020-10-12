@@ -130,7 +130,7 @@ public class Messages {
         for (int i = 0; i < taskList.getSize(); i++) {
             if (taskList.getTask(i).getDescriptionForFind().contains(keyword)) {
                 numberOfFoundTasks++;
-                int taskIndex = i+1;
+                int taskIndex = i + 1;
                 System.out.println(numberOfFoundTasks + ".[" + taskList.getTask(i).getType() + "]"
                         + "[" + taskList.getTask(i).getStatusIcon() + "] "
                         + taskList.getTask(i).getTaskDescription()
