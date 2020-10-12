@@ -3,12 +3,11 @@ package duke;
 import duke.messages.Messages;
 import duke.tasks.Parser;
 import duke.tasks.TaskList;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         TaskList taskList = new TaskList();
 
         Messages.printWelcomeMessage();
@@ -31,12 +30,10 @@ public class Duke {
      * p.s all other inputs will be ignored!
      *
      * @param taskList Task list which stores different types of tasks.
-     * @throws IOException If the Storage class fails to read / write data.
      */
-    private static void decodingUserCommands(TaskList taskList) throws IOException {
+    private static void decodingUserCommands(TaskList taskList) {
         String userInput;
         Scanner in = new Scanner(System.in);
-
         do {
             userInput = in.nextLine();
             Parser.parser(userInput, taskList);

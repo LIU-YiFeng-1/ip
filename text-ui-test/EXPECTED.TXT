@@ -60,6 +60,8 @@ Got it. I've added this task:
   [T][✘] againah?
 Number of available tasks stored in the list: 2
 -----------------------------------------------------------------------------
+file saved
+-----------------------------------------------------------------------------
 Got it. I've removed this task:
   [T][✓] reading
 Number of available tasks stored in the list: 1
