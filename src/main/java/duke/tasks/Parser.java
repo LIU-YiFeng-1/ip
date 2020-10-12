@@ -224,10 +224,7 @@ public class Parser {
      * @return index Task index which is used for task deletion or marking done.
      */
     public static int getTaskIndex(String input) {
-        String convertedInput;
-        int index;
-        convertedInput = input.replaceAll("[^0-9,-]", "");//replace all non-number with space
-        index = Integer.parseInt(convertedInput);
+        int index = Integer.parseInt(input);
         return index;
     }
 
