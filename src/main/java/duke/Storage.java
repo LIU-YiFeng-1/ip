@@ -108,11 +108,7 @@ public class Storage {
             Messages.printNoDataToSaveMessage();
         } else {
             for (int i = 0; i < taskList.getSize(); i++) {
-                if (taskList.getTask(i).getStatusIcon().equals(STATUS_DONE_SYMBOL)) {
-                    bufferedWriter.write(taskList.getTask(i).saveData() + "\n");
-                } else {
-                    bufferedWriter.write(taskList.getTask(i).saveData() + "\n");
-                }
+                bufferedWriter.write(taskList.getTask(i).saveData() + "\n");
             }
             System.out.println("file saved");
             Messages.printLine();
